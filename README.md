@@ -16,3 +16,10 @@ Prefix is suggested based on the [Angular convention](https://github.com/angular
 * refactor: A code change that neither fixes a bug nor adds a feature
 * style: Changes that do not affect the meaning of the code
 * test: Adding missing tests or correcting existing tests
+
+### Members:
+* Giantory Espino
+* Piero Loza
+* Juan Fernando Buitrago
+* Maray Montes
+* Martin Garcia
