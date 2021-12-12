@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Homeversity</title>
+</head>
+
+<body>
+    <!-- <header>
+
+        <img src="./logo.png" height=60 alt="HOMEVERSITY">
+        <span class="flex1"></span>
+        <ul>
+            <li><strong>Cursos</strong></li>
+            <li> <strong>Programas</strong></li>
+            <li> <strong>Membresia</strong></li>
+        </ul>
+        <span class="flex"></span>
+        <span> <strong>INGRESAR</strong> </span>
+    </header> -->
+
+    <main class="box1">
+        <div class="box2"> <strong>NUESTRO CURSOS</strong></div>
+        <section class="courses" id="courses">
+            <!-- <div class="box-main">
+                <div class="box-child-1"> </div>
+                <div>
+                    <h4 class="text2"> nombre del curso </h4>
+                    <p class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua."</p>
+                </div>
+                <div class="box-child-2"> </div>
+            </div> -->
+        </section>
+    </main>
+
+    <!-- <footer>
+        <strong>Pág 1 de ...>></strong>
+    </footer> -->
+
+    <script>
+        let listCourses = [
+            {
+                "id": "61afc06854e131145b079f94",
+                "price": "$141.16",
+                "coursedata": {
+                    "name": "Ozean",
+                    "about": "In officia aute id occaecat velit magna culpa excepteur. Aute elit ipsum ullamco ad."
+                }
+            },
+            {
+                "id": "61afc06857a06327361922eb",
+                "price": "$175.49",
+                "coursedata": {
+                    "name": "Quintity",
+                    "about": "Enim dolor dolor culpa nisi. Fugiat commodo exercitation tempor commodo cillum sint."
+                }
+            },
+            {
+                "id": "61afc068a463a08c87261adb",
+                "price": "$125.13",
+                "coursedata": {
+                    "name": "Twiist",
+                    "about": "Est nisi enim qui id. Ea cillum excepteur ea nostrud ex exercitation id aute nostrud."
+                }
+            },
+            {
+                "id": "61afc0686665eaf58e059cf0",
+                "price": "$143.61",
+                "coursedata": {
+                    "name": "Oceanica",
+                    "about": "Qui cillum anim nulla anim minim enim et eu do officia. Et dolor do nostrud tempor quis."
+                }
+            },
+            {
+                "id": "61afc0686c5c1e53219882aa",
+                "price": "$119.64",
+                "coursedata": {
+                    "name": "Comcubine",
+                    "about": "Quis consequat incididunt occaecat do elit adipisicing ipsum. Do non minim do occaecat."
+                }
+            },
+            {
+                "id": "61afc0686e916098989305be",
+                "price": "$143.76",
+                "coursedata": {
+                    "name": "Nebulean",
+                    "about": "Labore commodo consectetur et cupidatat dolore nisi minim nulla cillum consectetur elit."
+                }
+            },
+            {
+                "id": "61afc0683ac9f00a27fa04a7",
+                "price": "$188.02",
+                "coursedata": {
+                    "name": "Besto",
+                    "about": "Aute ea ea irure aliqua exercitation duis nisi ad cillum consectetur. Incididunt minim."
+                }
+            },
+            {
+                "id": "61afc0688e3d05967d58ea06",
+                "price": "$189.22",
+                "coursedata": {
+                    "name": "Musanpoly",
+                    "about": "Qui eiusmod quis in reprehenderit nostrud mollit velit labore sunt ipsum et fugiat."
+                }
+            },
+            {
+                "id": "61afc06826d80cb4c595988b",
+                "price": "$189.74",
+                "coursedata": {
+                    "name": "Quailcom",
+                    "about": "Ad qui et veniam quis est. Adipisicing ullamco enim mollit ex in deserunt Lorem velit."
+                }
+            },
+            {
+                "id": "61afc06849ba85a4d21c6861",
+                "price": "$149.68",
+                "coursedata": {
+                    "name": "Calcula",
+                    "about": "Incididunt qui amet magna ullamco et. Lorem adipisicing sunt labore dolor commodo."
+                }
+            },
+            {
+                "id": "61afc0687054cbfcb1219dc4",
+                "price": "$149.77",
+                "coursedata": {
+                    "name": "Liquicom",
+                    "about": "Culpa elit laboris reprehenderit Lorem elit ex amet magna. Excepteur labore sint consectetur."
+                }
+            },
+            {
+                "id": "61afc068ec3856ec958ce71f",
+                "price": "$106.75",
+                "coursedata": {
+                    "name": "Comveyer",
+                    "about": "Nulla cillum deserunt velit duis deserunt eiusmod pariatur cupidatat sit reprehenderit."
+                }
+            },
+            {
+                "id": "61afc0688807a1ec9a6e02b0",
+                "price": "$167.53",
+                "coursedata": {
+                    "name": "Gogol",
+                    "about": "Qui nulla exercitation elit duis do commodo reprehenderit. Aliqua consectetur aliquip."              }
+            },
+            {
+                "id": "61afc068f4531cd49a7c2a9e",
+                "price": "$146.81",
+                "coursedata": {
+                    "name": "Zounds",
+                    "about": "Quis qui sit pariatur excepteur laboris non velit qui occaecat. Consequat duis in aliqua."
+                }
+            },
+            {
+                "id": "61afc0683162edfa8fb2a420",
+                "price": "$193.09",
+                "coursedata": {
+                    "name": "Nurplex",
+                    "about": "Sint tempor occaecat adipisicing eiusmod reprehenderit nostrud id culpa irure eiusmod."                }
+            }
+        ]
+
+        let coursesContainer = document.getElementById("courses");
+        for (let i = 0; i < listCourses.length; i++) {
+            let boxMain = document.createElement("div");
+            boxMain.className = "box-main"
+            coursesContainer.appendChild(boxMain)
+            let boxChaild1 = document.createElement("div")
+            boxChaild1.className = "box-child-1"
+            boxMain.appendChild(boxChaild1)
+            let boxText=document.createElement("div")
+            boxText.className= "boxtext"
+            boxMain.appendChild(boxText)
+            let text2= document.createElement("h4");
+            text2.className= "text2"
+            text2.textContent = listCourses[i].coursedata.name
+            boxText.appendChild(text2)
+            let text = document.createElement("p");
+            text.className = "text"
+            text.textContent = listCourses[i].coursedata.about
+            boxText.appendChild(text)
+            let boxChaild2 = document.createElement("div");
+            boxChaild2.className = "box-child-2"
+            boxText.appendChild(boxChaild2)
+            let text3= document.createElement("p")
+            text3.className = "text3"
+            text3.textContent = "Course"
+            boxChaild2.appendChild(text3)
+            
+        }
+
+    </script>
+</body>
+
+</html>
