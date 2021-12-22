@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrito</title>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+        <div class="progress_bar">
+            <div class="point_active">1</div>
+            <span class="progress_label">Carrito de Compras</span>
+            <div class="divider"></div>
+            <div class="point_inactive">2</div>
+            <span class="progress_label">Detalles de pago</span>
+            <div class="divider"></div>
+            <div class="point_inactive">3</div>
+            <span class="progress_label">Compra realizada</span>
+        </div>
+        <div class="table">
+            <div class="table_header">
+                <span>Producto</span>
+                <span style="display: flex; flex-grow: 0.2"></span>
+                <span>Cantidad</span>
+                <span>Eliminar</span>
+                <span>Total</span>
+            </div>
+            <div class="table_body">
+                <div class="table_cell">
+                    <div class="curso_cell">
+                        <div class="img_curso"></div>
+                        <div class="txt_curso">
+                            <span>Curso 1</span>
+                            <span>S./ 100</span>
+                        </div>
+                    </div>
+                    <span style="display: flex; flex-grow: 0.08"></span>
+                    <span class="column_cell">1</span>
+                    <span class="column_cell">Icono</span>
+                    <span class="column_cell">S./ 100</span>
+                </div>
+                <div class="table_cell">
+                    <div class="curso_cell">
+                        <div class="img_curso"></div>
+                        <div class="txt_curso">
+                            <span>Curso 2</span>
+                            <span>S./ 150</span>
+                        </div>
+                    </div>
+                    <span style="display: flex; flex-grow: 0.08"></span>
+                    <span class="column_cell">1</span>
+                    <span class="column_cell">Icono</span>
+                    <span class="column_cell">S./ 150</span>
+                </div>
+                <div class="table_cell">
+                    <div class="curso_cell">
+                        <div class="img_curso"></div>
+                        <div class="txt_curso">
+                            <span>Curso 3</span>
+                            <span>S./ 200</span>
+                        </div>
+                    </div>
+                    <span style="display: flex; flex-grow: 0.08"></span>
+                    <span class="column_cell">1</span>
+                    <span class="column_cell">Icono</span>
+                    <span class="column_cell">S./ 200</span>
+                </div>
+            </div>
+        </div>
+        <div class="section_price">
+            <div class="row_price">
+                <span class="txt_price">Subtotal</span>
+                <span class="txt_price">S./ 450</span>
+            </div>
+            <div class="row_price">
+                <span class="txt_price">15 OFF</span>
+                <span class="txt_discount">- S./ 30</span>
+            </div>
+            <div class="row_price">
+                <span class="txt_price">Total</span>
+                <span class="txt_total">S./ 420</span>
+            </div>
+        </div>
+        <div class="section_end">
+            <button class="btn_buy">Finalizar Compra</button>
+        </div>
+    </div>
+</body>
+
+</html>
