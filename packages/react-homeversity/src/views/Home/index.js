@@ -1,3 +1,4 @@
+import Mentores from '../../components/Mentores'
 import Header from '../../components/Header';
 import Increase from "../../components/Increase";
 
@@ -24,7 +25,7 @@ function Home() {
 
       {/* APRENDE DE LA MANO */}
 
-      {/* FOOTER */}
+    <Mentores />
 
       {/* FOOTER */}
     </div>
