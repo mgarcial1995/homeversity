@@ -1,4 +1,4 @@
-import Increase from "./components/Increase";
+import Increase from "../../components/Increase";
 
 function Home() {
   return (
