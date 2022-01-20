@@ -1,5 +1,6 @@
 function Home() {
   return <div>
+    Home
     {/* NAVBAR */}
 
     {/* NAVBAR */}
