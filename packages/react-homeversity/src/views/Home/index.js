@@ -1,29 +1,55 @@
+import courses_home from "../../courses_home";
+import React from "react";
+import Courses from "../../components/Courses";
+import "./styles.sass"
+
 function Home() {
-  return <div>
-    {/* NAVBAR */}
+  
+  return (
+    <div>
+      {/* NAVBAR */}
 
-    {/* NAVBAR */}
+      {/* NAVBAR */}
 
-    {/* HEADER */}
+      {/* HEADER */}
 
-    {/* HEADER */}
+      {/* HEADER */}
 
-    {/* NUESTROS CURSOS */}
+      {/* NUESTROS CURSOS */}
 
-    {/* NUESTROS CURSOS */}
+      <main className="box1">
+       
+        
+        <div className="box2"> <strong>NUESTROS CURSOS</strong></div>
+       
+        <section className="courses" id="courses">
+       
+          {courses_home.map((elem) => {
+            
+            return <Courses key = {elem.id} data={elem} />
+          
+          })
+          }
+        </section>
+        </main>
+      
 
-    {/* CRECIMIENTO PROFESIONAL */}
-    
-    {/* CRECIMIENTO PROFESIONAL */}
 
-    {/* APRENDE DE LA MANO */}
+      {/* NUESTROS CURSOS */}
 
-    {/* APRENDE DE LA MANO */}
+      {/* CRECIMIENTO PROFESIONAL */}
 
-    {/* FOOTER */}
+      {/* CRECIMIENTO PROFESIONAL */}
 
-    {/* FOOTER */}
-  </div>;
+      {/* APRENDE DE LA MANO */}
+
+      {/* APRENDE DE LA MANO */}
+
+      {/* FOOTER */}
+
+      {/* FOOTER */}
+    </div>
+  );
 }
 
 export default Home;
