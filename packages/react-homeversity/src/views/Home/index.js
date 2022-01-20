@@ -1,3 +1,4 @@
+import Header from '../../components/Header';
 import Increase from "../../components/Increase";
 
 function Home() {
@@ -7,9 +8,9 @@ function Home() {
 
       {/* NAVBAR */}
 
-      {/* HEADER */}
-
-      {/* HEADER */}
+    {/* HEADER */}
+    <Header/>
+    {/* HEADER */}
 
       {/* NUESTROS CURSOS */}
 
