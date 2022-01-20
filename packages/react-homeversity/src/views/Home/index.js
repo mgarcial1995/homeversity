@@ -1,3 +1,4 @@
+import Mentores from '../../components/Mentores'
 function Home() {
   return <div>
     {/* NAVBAR */}
@@ -13,14 +14,14 @@ function Home() {
     {/* NUESTROS CURSOS */}
 
     {/* CRECIMIENTO PROFESIONAL */}
-    
+
     {/* CRECIMIENTO PROFESIONAL */}
 
     {/* APRENDE DE LA MANO */}
 
     {/* APRENDE DE LA MANO */}
 
-    {/* FOOTER */}
+    <Mentores />
 
     {/* FOOTER */}
   </div>;
