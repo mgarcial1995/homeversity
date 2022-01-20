@@ -1,31 +1,34 @@
 import Header from '../../components/Header';
+import Increase from "../../components/Increase";
 
 function Home() {
-  return <div>
-    {/* NAVBAR */}
+  return (
+    <div>
+      {/* NAVBAR */}
 
-    {/* NAVBAR */}
+      {/* NAVBAR */}
 
     {/* HEADER */}
     <Header/>
     {/* HEADER */}
 
-    {/* NUESTROS CURSOS */}
+      {/* NUESTROS CURSOS */}
 
-    {/* NUESTROS CURSOS */}
+      {/* NUESTROS CURSOS */}
 
-    {/* CRECIMIENTO PROFESIONAL */}
-    
-    {/* CRECIMIENTO PROFESIONAL */}
+      {/* CRECIMIENTO PROFESIONAL */}
+      <Increase />
+      {/* CRECIMIENTO PROFESIONAL */}
 
-    {/* APRENDE DE LA MANO */}
+      {/* APRENDE DE LA MANO */}
 
-    {/* APRENDE DE LA MANO */}
+      {/* APRENDE DE LA MANO */}
 
-    {/* FOOTER */}
+      {/* FOOTER */}
 
-    {/* FOOTER */}
-  </div>;
+      {/* FOOTER */}
+    </div>
+  );
 }
 
 export default Home;
