@@ -1,3 +1,5 @@
+import Header from '../../components/Header';
+
 function Home() {
   return <div>
     {/* NAVBAR */}
@@ -5,7 +7,7 @@ function Home() {
     {/* NAVBAR */}
 
     {/* HEADER */}
-
+    <Header/>
     {/* HEADER */}
 
     {/* NUESTROS CURSOS */}
