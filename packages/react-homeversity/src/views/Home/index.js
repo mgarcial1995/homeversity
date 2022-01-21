@@ -12,10 +12,8 @@ function Home() {
       <Header />
       <main className='box1'>
         <div className='box2'>
-          {" "}
           <strong>NUESTROS CURSOS</strong>
         </div>
-
         <section className='courses' id='courses'>
           {courses_home.map((elem) => {
             return <Courses key={elem.id} data={elem} />;
