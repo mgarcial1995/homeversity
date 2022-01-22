@@ -1,31 +1,45 @@
-import React from 'react';
-import './styles.css';
+import React from "react";
+import "./styles.sass";
 
 function Mentores() {
-    return <div className='root'>
-        <h3>APRENDE DE LA MANO CON LOS MEJORES MENTORES</h3>
-        <div className='mentores'>
-            <div>
-                <img src='./perfil_1.png' width={'150px'} height={'150px'}></img>
-                <h5>CARPINTERIA AVANZADA</h5>
+  const mentors = [
+    {
+      src: "./perfil_1.png",
+      work: "CARPINTERIA AVANZADA",
+    },
+    {
+      src: "./perfil_2.png",
+      work: "PINTURA ARTÍSTICA",
+    },
+    {
+      src: "./perfil_3.png",
+      work: "ING. LECTRÓNICA",
+    },
+    {
+      src: "./perfil_4.png",
+      work: "ESCULTURA EN BARRO",
+    },
+  ];
+  return (
+    <div className='mentors'>
+      <h1 className='mentors_title'>
+        APRENDE DE LA MANO CON <br /> LOS MEJORES MENTORES
+      </h1>
+      <div className='mentors_section'>
+        {mentors.map((mentor,i) => {
+          return <div key={i} className='mentors_section_mentor'>
+            <div className='mentors_section_mentor_img'>
+              <img src={mentor.src} alt={mentor.work} />
             </div>
-            <div>
-                <img src='./perfil_2.png' width={'150px'} height={'150px'}></img>
-                <h5>PINTURA ARTÍSTICA</h5>
-            </div>
-            <div>
-                <img src='./perfil_3.png' width={'150px'} height={'150px'}></img>
-                <h5>ING. LECTRÓNICA</h5>
-            </div>
-            <div>
-                <img src='./perfil_4.png' width={'150px'} height={'150px'}></img>
-                <h5>ESCULTURA EN BARRO</h5>
-            </div>
-        </div>
-        <div>
-            <img src='./step.jpg'></img>
-        </div>
-    </div>;
+            <h3 className='mentors_section_mentor_title'>
+              {mentor.work}
+            </h3>
+          </div>;
+        })}
+      </div>
+      <div></div>
+    </div>
+  );
 }
 
 export default Mentores;
