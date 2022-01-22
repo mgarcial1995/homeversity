@@ -1,9 +1,9 @@
 import './styles.sass'
-import facebook from '../../assests/img/facebook-icon.png'
-import instagram from '../../assests/img/instagram-icon.png'
-import twitter from '../../assests/img/twitter-icon.png'
-import youtube from '../../assests/img/youtube-icon.png'
-import LogoFooter from '../../assests/img/logo-footer.png'
+import facebook from '../../assets/img/facebook-icon.png'
+import instagram from '../../assets/img/instagram-icon.png'
+import twitter from '../../assets/img/twitter-icon.png'
+import youtube from '../../assets/img/youtube-icon.png'
+import LogoFooter from '../../assets/img/logo-footer.png'
 const Footer = () => {
     return (
       <div className="footer">

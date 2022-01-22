@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './styles.sass'
-import LogoHeader from '../../assests/img/logo-header.png'
-import Carshop from '../../assests/img/shopcart.png'
+import LogoHeader from '../../assets/img/logo-header.png'
+import Carshop from '../../assets/img/shopcart.png'
 const Navbar = (props) => {
     const {routes} = props
 
