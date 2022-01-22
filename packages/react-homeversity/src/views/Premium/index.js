@@ -35,7 +35,7 @@ function Premium() {
     <div>
       <div className="header_premium">
         <p className="header_tittle">MEMBRESÍA</p>
-        <p className="header_message">¡OBTÉN UNA MEMBRESÍA AHORA MISMO!</p>
+        <p className="header_message">¡OBTENLA AHORA MISMO!</p>
       </div>
       <div className="cards_container">
         {plans.map((plan) => (
