@@ -27,8 +27,7 @@ function Increase() {
     <div className="increase">
       <hr className="increase_line" />
       <div className="increase_title">
-        <h1>Aumenta tu crecimiento</h1>
-        <h1>Profesional</h1>
+        <h1>Aumenta tu crecimiento <br/> Profesional</h1>
       </div>
 
       <div className="increase_benefit">
@@ -53,11 +52,10 @@ function Increase() {
       <div className="increase_benefit">
         <div className="increase_benefit_content_left">
           <h3 className="increase_benefit_content_left_title">
-            Clases Online Grabadas
+          Acceso total a tu cuenta
           </h3>
           <p className="increase_benefit_content_left_description">
-            Todas las clases son grabadas para que puedas verlas en el momento
-            que prefieras
+          Por la compra de uno de nuestros cursos o programas, tendrás el acceso a este contenido para siempre.
           </p>
         </div>
         <img
@@ -79,11 +77,10 @@ function Increase() {
         />
         <div className="increase_benefit_content_right">
           <h3 className="increase_benefit_content_right_title">
-            Clases Online Grabadas
+          Obtén tu certificado al terminar tus cursos
           </h3>
           <p className="increase_benefit_content_right_description">
-            Todas las clases son grabadas para que puedas verlas en el momento
-            que prefieras
+          Tendrás la opción de descargar un certificado por cada curso que concluyas en nuestra plataforma.
           </p>
         </div>
       </div>
