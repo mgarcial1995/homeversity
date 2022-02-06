@@ -1,0 +1,31 @@
+{
+  "courses": [
+    {
+      "_id": "I7ufmbfCoNzhUDgXeE9dN",
+      "name": "Electronica para principiantes",
+      "description": "Cursos de electronica para aprender a cambiar de foco",
+      "valoration": "4",
+      "teacher": "Juan Fernando",
+      "price": "S/ 40.00",
+      "photo": "https://picsum.photos/200",
+      "video": "https://www.youtube.com/watch?v=IHPTi-SX_2s&list=RDMMIHPTi-SX_2s&start_radio=1&ab_channel=DrakeBellVEVO",
+      "hours": "10",
+      "level": "Principiante",
+      "category": "Electronica"
+    },
+    {
+      "_id": "CiquITCnJaUVA23kvHbhj",
+      "name": "Carpinteria avazada",
+      "description": "Cursos de carpinteria para maestros",
+      "valoration": "5",
+      "teacher": "Juan Fernando",
+      "price": "S/. 100.00",
+      "photo": "https://picsum.photos/200",
+      "video": "https://www.youtube.com/watch?v=IHPTi-SX_2s&list=RDMMIHPTi-SX_2s&start_radio=1&ab_channel=DrakeBellVEVO",
+      "hours": "25",
+      "level": "Avanzado",
+      "category": "Carpinteria"
+    }
+  ],
+  "programs": []
+}
