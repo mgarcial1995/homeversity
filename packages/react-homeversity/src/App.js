@@ -6,6 +6,8 @@ import Premium from "./views/Premium";
 import Programs from "./views/Programs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import LoginBox from "./components/LoginBox";
+import { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -15,9 +17,14 @@ function App() {
     { name: "MEMBRESIA", url: "/premium" },
   ];
 
+  const [typeLog, setTypeLog] = useState("login")
+  const [loginData, setLoginData] = useState({})
+  const [registerData, setRegisterData] = useState({})
+
   return (
     <div className="App">
       <Navbar routes={routesNav} />
+      <LoginBox />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/courses' element={<Courses />} />

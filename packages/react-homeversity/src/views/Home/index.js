@@ -4,6 +4,8 @@ import Increase from "../../components/Increase";
 import courses_home from "../../courses_home";
 import React from "react";
 import Courses from "../../components/Courses";
+
+
 import "./styles.sass";
 
 function Home() {
