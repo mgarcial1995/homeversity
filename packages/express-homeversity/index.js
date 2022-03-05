@@ -19,14 +19,14 @@ const app = express();
 
 
 // MONGODBIMPORT
-mongoose.connect(
-	`mongodb://127.0.0.1:27017/homeversity`,
-	{ useUnifiedTopology: true, useNewUrlParser: true }
-);
-
 // mongoose.connect(
-// 	`mongodb+srv://admin:martin12345@cluster0.n075l.mongodb.net/homeversity?retryWrites=true&w=majority`
+// 	`mongodb://127.0.0.1:27017/homeversity`,
+// 	{ useUnifiedTopology: true, useNewUrlParser: true }
 // );
+
+mongoose.connect(
+	`mongodb+srv://admin:martin12345@cluster0.n075l.mongodb.net/homeversity?retryWrites=true&w=majority`
+);
 
 // Global Middlewares
 app.use(express.json());

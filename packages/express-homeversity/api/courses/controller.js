@@ -26,10 +26,11 @@ exports.newCourse = async (req, res) =>{
         teacher: body.teacher,
         price: body.price,
         photo: body.photo,
-        video: body.video,
+        introducer_video: body.video,
         hours: body.hours,
         level: body.level,
-        category: body.category
+        category: body.category,
+        class: body.class
     });
     await Courses.save()
         .then(response =>{
