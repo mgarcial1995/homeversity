@@ -62,3 +62,14 @@ exports.deleteAllCourses = (req, res) =>{
         res.status(400).json({ success: false, error: err})
     })
 }
+exports.updateCourseById = (req, res) =>{
+    // const courses = db.get('courses').value(); // query
+    const id = req.params.id
+    const body = req.body
+    CourseModel.findByIdAndUpdate(id, body, {new: true}).then(response =>{
+        res.status(200).json({ success: true, message:"Course update", data: response })
+    }).catch(err => {
+        console.log(err);
+        res.status(400).json({ success: false, error: err})
+    })
+}

@@ -43,8 +43,8 @@ function Home() {
             </div>
               <section className='courses' id='courses'>
                 {listCourses.map((elem,i) => {
-                  return <div key={elem.id} onClick={()=>displayDataCourse(elem._id)}>
-                    <Coursess data={elem} />;
+                  return <div key={i} onClick={()=>displayDataCourse(elem._id)}>
+                    <Coursess key={elem._id} data={elem} />
                     </div>
                  
                 })}

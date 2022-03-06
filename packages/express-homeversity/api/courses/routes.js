@@ -7,6 +7,6 @@ router.get('/', CoursesController.getAllCourses);
 router.post('/create', CoursesController.newCourse);
 router.delete('/deleteAll', CoursesController.deleteAllCourses);
 router.delete('/delete/:id', CoursesController.deleteCourseByID);
-// router.get('/:id', CoursesController.newCourse);
+router.put('/update/:id', CoursesController.updateCourseById);
 
 module.exports = router

@@ -9,9 +9,6 @@ import { useContext, useState, useEffect } from "react";
 
 const IntroducerCourse = ({courseData}) => {
   const { showIntroCourse, setShowIntroCourse } = useContext(OpenIntroCourse);
-  useEffect(() => {
-    console.log(courseData, "asas")
-  }, []);
 
   let getId = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -27,7 +24,7 @@ const IntroducerCourse = ({courseData}) => {
       </div>
       <div className='introducer_course'>
         <div className='introducer_course_video'>
-          <iframe className='introducer_course_video_video' src={`//www.youtube.com/embed/${getId(courseData.introducer_video)}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+          <iframe className='introducer_course_video_video' src={`//www.youtube.com/embed/${getId(courseData.introducer_video)}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  ></iframe>
         </div>
         <div className='introducer_course_info'>
           <div className='introducer_course_info_description'>

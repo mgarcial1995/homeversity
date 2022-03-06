@@ -2,7 +2,10 @@ import "./styles.sass";
 import Carshop from "../../assets/img/shopcart.png";
 import React, { useState, useContext } from "react";
 
-
+let cutString = (str) =>{
+  let newstring = str.slice(0, 195)
+  return newstring+'...'
+}
 const Coursess = ({ data }) => {
   let star = [];
   let val = data.valoration ? data.valoration : data.stars
@@ -19,7 +22,7 @@ const Coursess = ({ data }) => {
         </div>
         <h2 className="box-main_box-child-1_h4 ">{data.name} </h2>
         <p className="box-main_box-child-1_p ">Por {data.teacher} </p>
-        <p className="box-main_box-child-1_p"> {data.description ? data.description : data.about} </p>
+        <p className="box-main_box-child-1_p"> {data.description ? data.description.length > 195 ? cutString(data.description) :data.description : data.about} </p>
         <div className="box-main_box-child-1_star">
           {star.map((el, i) => (
             <img key={i} src="./star.png" width={"10px"} height={"10px"} />
@@ -32,12 +35,12 @@ const Coursess = ({ data }) => {
             width="15"
             src={Carshop}
             alt="Comprar"
-          /> <strong>{data.price}</strong>
+          /> <strong>S/.{data.price}</strong>
           </p>
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default Coursess;
