@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import Increase from "../../components/Increase";
 import courses_home from "../../courses_home";
 import React from "react";
-import Courses from "../../components/Courses";
+import Coursess from "../../components/Coursess";
 import "./styles.sass";
 
 function Home() {
@@ -16,7 +16,7 @@ function Home() {
         </div>
         <section className='courses' id='courses'>
           {courses_home.map((elem) => {
-            return <Courses key={elem.id} data={elem} />;
+            return <Coursess key={elem.id} data={elem} />;
           })}
         </section>
       </main>

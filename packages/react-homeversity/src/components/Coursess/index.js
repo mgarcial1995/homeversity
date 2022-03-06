@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.sass";
 import Carshop from "../../assets/img/shopcart.png";
 
-const Courses = ({ data }) => {
+const Coursess = ({ data }) => {
   let star = [];
   if (data.stars == 1) star = [1];
   if (data.stars == 2) star = [1, 1];
@@ -42,4 +42,4 @@ const Courses = ({ data }) => {
   );
 };
 
-export default Courses;
+export default Coursess;
