@@ -26,7 +26,7 @@ exports.newCourse = async (req, res) =>{
         teacher: body.teacher,
         price: body.price,
         photo: body.photo,
-        introducer_video: body.video,
+        introducer_video: body.introducer_video,
         hours: body.hours,
         level: body.level,
         category: body.category,
@@ -42,6 +42,16 @@ exports.newCourse = async (req, res) =>{
             res.status(400).json({ success: false, error: err})
         }
     );
+}
+exports.deleteCourseByID = (req, res) =>{
+    // const courses = db.get('courses').value(); // query
+    const id = req.params.id
+    CourseModel.findByIdAndDelete(id).then(response =>{
+        res.status(200).json({ success: true, message:"Course deleted" })
+    }).catch(err => {
+        console.log(err);
+        res.status(400).json({ success: false, error: err})
+    })
 }
 exports.deleteAllCourses = (req, res) =>{
     // const courses = db.get('courses').value(); // query
