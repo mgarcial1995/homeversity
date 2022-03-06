@@ -7,6 +7,7 @@ import CreditCard from "../../components/CreditCard";
 import VisaForm from "../../components/VisaForm";
 import PurchasedCourse from "../../components/PurchasedCourse";
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import "./styles.sass";
 
 export const StepContext = React.createContext({});
@@ -20,6 +21,7 @@ function Carshop() {
     "Detalle de compras",
     "Compra realizada",
   ];
+  const lastStep = steps.length;
   const [currentStep, updateCurrentStep] = useState(1);
   const [paymentButtonSelected, setSelectedButton] = useState(1);
   const [creditCardSelected, setSelectedCreditCard] = useState(1);
@@ -58,11 +60,11 @@ function Carshop() {
   const creditCardList = [
     {
       name: "Visa",
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzmyLjORKt3NzRGN6b2r3NPs_jvMkh_Wa9Ep2Kt4ex27YpwakbMK5MeiWquDATLa0diyM&usqp=CAU",
+      logo: "./visa_logo.png",
     },
     {
       name: "MasterCard",
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzmyLjORKt3NzRGN6b2r3NPs_jvMkh_Wa9Ep2Kt4ex27YpwakbMK5MeiWquDATLa0diyM&usqp=CAU",
+      logo: "./mastercard_logo.png",
     },
   ];
 
@@ -82,40 +84,36 @@ function Carshop() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzmyLjORKt3NzRGN6b2r3NPs_jvMkh_Wa9Ep2Kt4ex27YpwakbMK5MeiWquDATLa0diyM&usqp=CAU",
       amount: 1,
       total: 100,
-    }
+    },
   ];
 
   const renderSwitchCreditCardForms = (creditCardSelected) => {
-      switch(creditCardSelected) {
-        case 1: 
-          return (
-            <VisaForm/>
-          )
-        case 2:
-          return (
-            "MasterCardForm"
-          )
-        default:
-          return ""
-      }
-  }
+    switch (creditCardSelected) {
+      case 1:
+        return <VisaForm />;
+      case 2:
+        return <VisaForm />;
+      default:
+        return "";
+    }
+  };
 
   const renderSwitchPaymentMethods = (paymentButtonSelected) => {
     switch (paymentButtonSelected) {
       case 1:
         return (
           <>
-          <div className="credit-cards-container">
-            <CreditCardContext.Provider
-              value={{ creditCardSelected, setSelectedCreditCard }}
-            >
-              {creditCardList.map((creditCard, i) => (
-                <CreditCard key={i} creditCard={creditCard} index={i} />
-              ))}
-            </CreditCardContext.Provider>
-          </div>
-          <div className="credit-card-horizontal-line"></div>
-          {renderSwitchCreditCardForms(creditCardSelected)}
+            <div className="credit-cards-container">
+              <CreditCardContext.Provider
+                value={{ creditCardSelected, setSelectedCreditCard }}
+              >
+                {creditCardList.map((creditCard, i) => (
+                  <CreditCard key={i} creditCard={creditCard} index={i} />
+                ))}
+              </CreditCardContext.Provider>
+            </div>
+            <div className="credit-card-horizontal-line"></div>
+            {renderSwitchCreditCardForms(creditCardSelected)}
           </>
         );
       default:
@@ -127,12 +125,20 @@ function Carshop() {
     switch (currentStep) {
       case 1:
         return (
-          <div className="courses-container">
-            <CarHeader headers={headers} />
-            {coursesOnCar.map((course, i) => (
-              <CoursesOnCar key={i} course={course} />
-            ))}
-          </div>
+          <>
+            <div className="courses-container">
+              <CarHeader headers={headers} />
+              {coursesOnCar.map((course, i) => (
+                <CoursesOnCar key={i} course={course} />
+              ))}
+            </div>
+            <button
+              className="next-step"
+              onClick={() => updateCurrent(currentStep + 1)}
+            >
+              Siguiente
+            </button>
+          </>
         );
       case 2:
         return (
@@ -148,6 +154,12 @@ function Carshop() {
                 </PaymentButtonContext.Provider>
               </div>
               {renderSwitchPaymentMethods(paymentButtonSelected)}
+              <button
+                className="confirm-purchase-button"
+                onClick={() => updateCurrent(currentStep + 1)}
+              >
+                Finalizar compra
+              </button>
             </div>
             <div className="payment-separator"></div>
             <div className="right">
@@ -159,13 +171,24 @@ function Carshop() {
         );
       case 3:
         return (
-          <div className="sale-completed">
-            <h1 className="sale-completed-tittle">¡COMPRA EXITOSA!</h1>
-            <p1 className="sale-completed-mensagge">Felicidades nameUser has adquirido los cursos: </p1>
-            {purchasedCourses.map((purchasedCourse) => (
-              <PurchasedCourse purchasedCourse={purchasedCourse}/>
-            ))}
-          </div>
+          <>
+            <div className="sale-completed">
+              <h1 className="sale-completed-tittle">¡COMPRA EXITOSA!</h1>
+              <p1 className="sale-completed-mensagge">
+                Felicidades nameUser has adquirido los cursos:{" "}
+              </p1>
+              {purchasedCourses.map((purchasedCourse) => (
+                <PurchasedCourse purchasedCourse={purchasedCourse} />
+              ))}
+            </div>
+            <Link to="/courses">
+            <button
+              className="sale-completed-button"
+            >
+              Ir a Mis Cursos
+            </button>
+            </Link>
+          </>
         );
       default:
         return "";
@@ -174,16 +197,10 @@ function Carshop() {
 
   return (
     <div className="carshop-container">
-      <StepContext.Provider value={{ currentStep }}>
+      <StepContext.Provider value={{ currentStep, lastStep }}>
         <ProgressBar steps={steps} />
       </StepContext.Provider>
       {renderSwitchStep(currentStep)}
-      <button
-        className="next-step"
-        onClick={() => updateCurrent(currentStep + 1)}
-      >
-        FINALIZAR COMPRA
-      </button>
     </div>
   );
 }
