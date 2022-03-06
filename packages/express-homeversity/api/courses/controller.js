@@ -42,18 +42,13 @@ exports.newCourse = async (req, res) =>{
             res.status(400).json({ success: false, error: err})
         }
     );
-    // console.log(body)
-    // const courseSchema = CourseModel.courseSchema
-    // const result = courseSchema.validate(body);
-    // const { value, error } = result;
-    // if(error == null){
-    //     const course = {
-    //         _id: nanoid(),
-    //         ...value
-    //     }
-    //     db.get('courses').push(course).write();
-    //     res.status(200).json({ success: true, message: 'Course has been created', data: course })
-    // }else{
-    //     res.status(400).json({ success: false, data: value, error: error, cosa: "Giantory" })
-    // }
+}
+exports.deleteAllCourses = (req, res) =>{
+    // const courses = db.get('courses').value(); // query
+    CourseModel.deleteMany().then(response =>{
+        res.status(200).json({ success: true, message:"All courses delete" })
+    }).catch(err => {
+        console.log(err);
+        res.status(400).json({ success: false, error: err})
+    })
 }

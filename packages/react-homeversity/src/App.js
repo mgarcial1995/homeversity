@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
 import Home from "./views/Home";
 import Carshop from "./views/Carshop";
 import Courses from "./views/Courses";
@@ -7,9 +8,9 @@ import Programs from "./views/Programs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LoginBox from "./components/LoginBox";
-import { useState } from "react";
 import "./App.css";
 
+export const OpenLoginContext = React.createContext({})
 function App() {
   const routesNav = [
     { name: "CURSOS", url: "/courses" },
@@ -17,14 +18,21 @@ function App() {
     { name: "MEMBRESIA", url: "/premium" },
   ];
 
-  const [typeLog, setTypeLog] = useState("login")
-  const [loginData, setLoginData] = useState({})
-  const [registerData, setRegisterData] = useState({})
+  const [typeLog, setTypeLog] = useState("login");
+  const [loginData, setLoginData] = useState({});
+  const [registerData, setRegisterData] = useState({});
+  const [openLogin, setOpenLogin] = useState(false);
+
+
 
   return (
-    <div className="App">
-      <Navbar routes={routesNav} />
-      <LoginBox />
+    <div className='App'>
+      <OpenLoginContext.Provider value={{ openLogin, setOpenLogin }}>
+        <Navbar routes={routesNav} />
+      </OpenLoginContext.Provider>
+      {
+        openLogin == true ? <LoginBox /> : ""
+      }
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/courses' element={<Courses />} />

@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom';
 import './styles.sass'
 import LogoHeader from '../../assets/img/logo-header.png'
 import Carshop from '../../assets/img/shopcart.png'
+import { OpenLoginContext } from '../../App';
+import React, { useContext } from "react";
 const Navbar = (props) => {
     const {routes} = props
+    const { openLogin, setOpenLogin } = useContext(OpenLoginContext);
 
     return (
       <div className="navbar">
@@ -23,7 +26,7 @@ const Navbar = (props) => {
         </div>
         <div className="navbar_right">
           <img className="navbar_right_carshop" width="100" src={Carshop} alt="Comprar"/>
-          <div className="navbar_right_button">Ingresar</div>
+          <div className="navbar_right_button" onClick={() => setOpenLogin(true)}>Ingresar</div>
         </div>
       </div>
     );

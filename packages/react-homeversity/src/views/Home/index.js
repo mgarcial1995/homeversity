@@ -4,7 +4,7 @@ import Increase from "../../components/Increase";
 import courses_home from "../../courses_home";
 import React from "react";
 import Courses from "../../components/Courses";
-
+import IntroducerCourse from "../../components/IntroducerCourse";
 
 import "./styles.sass";
 
@@ -12,6 +12,7 @@ function Home() {
   return (
     <div>
       <Header />
+      {/* <IntroducerCourse /> */}
       <main className='box1'>
         <div className='box2'>
           <strong>NUESTROS CURSOS</strong>
