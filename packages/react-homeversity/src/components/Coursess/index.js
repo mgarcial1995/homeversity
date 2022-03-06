@@ -1,7 +1,7 @@
 import "./styles.sass";
 import Carshop from "../../assets/img/shopcart.png";
-import React, { useState } from "react";
-export const OpenIntroCourse = React.createContext({})
+import React, { useState, useContext } from "react";
+import { OpenIntroCourse } from '../../views/Home';
 
 const Coursess = ({ data }) => {
   let star = [];
@@ -10,11 +10,10 @@ const Coursess = ({ data }) => {
   if (data.stars == 3) star = [1, 1, 1];
   if (data.stars == 4) star = [1, 1, 1, 1];
   if (data.stars == 5) star = [1, 1, 1, 1, 1];
-  const [showIntroCourse, setShowIntroCourse] = useState(false)
+  const { showIntroCourse, setShowIntroCourse } = useContext(OpenIntroCourse);
   return (
-    <OpenIntroCourse.Provider value={{ data, showIntroCourse, setShowIntroCourse }}>
-    <div>
-      <div onClick={()=> setShowIntroCourse(true)} className="box-main">
+    <div onClick={() => setShowIntroCourse(true)}>
+      <div className="box-main">
         <div className="box-main_box-child-1">
           <img className="box-main_box-child-1_img" src={data.img} />
         </div>
@@ -22,8 +21,8 @@ const Coursess = ({ data }) => {
         <p className="box-main_box-child-1_p ">Por {data.teacher} </p>
         <p className="box-main_box-child-1_p"> {data.about} </p>
         <div className="box-main_box-child-1_star">
-          {star.map((el) => (
-            <img src="./star.png" width={"10px"} height={"10px"} />
+          {star.map((el, i) => (
+            <img key={i} src="./star.png" width={"10px"} height={"10px"} />
           ))}
         </div>
         <div className="box-main_box-child-1_price">
@@ -38,7 +37,6 @@ const Coursess = ({ data }) => {
         </div>
       </div>
     </div>
-    </OpenIntroCourse.Provider>
   );
 };
 

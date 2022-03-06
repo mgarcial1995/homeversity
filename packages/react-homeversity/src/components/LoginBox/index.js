@@ -12,10 +12,8 @@ const LoginBox = () => {
     return (
       <div className="login__container">
             <img className="imgContent" src={LoginImage} alt=""/>
-            
             <LoginContent />
             {/* <RegisterContent /> */}
-         
       </div>
     )
   };

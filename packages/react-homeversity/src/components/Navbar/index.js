@@ -25,7 +25,9 @@ const Navbar = (props) => {
           </ul>
         </div>
         <div className="navbar_right">
-          <img className="navbar_right_carshop" width="100" src={Carshop} alt="Comprar"/>
+          <Link to="/carshop">
+            <img className="navbar_right_carshop" width="100" src={Carshop} alt="Comprar"/>
+          </Link>
           <div className="navbar_right_button" onClick={() => setOpenLogin(true)}>Ingresar</div>
         </div>
       </div>
