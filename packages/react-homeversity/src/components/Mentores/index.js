@@ -12,10 +12,6 @@ function Mentores() {
       work: "PINTURA ARTÍSTICA",
     },
     {
-      src: "./perfil_3.png",
-      work: "ING. LECTRÓNICA",
-    },
-    {
       src: "./perfil_4.png",
       work: "ESCULTURA EN BARRO",
     },
