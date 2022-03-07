@@ -17,10 +17,6 @@ function App() {
     { name: "PROGRAMAS", url: "/programs" },
     { name: "MEMBRESIA", url: "/premium" },
   ];
-
-  const [typeLog, setTypeLog] = useState("login");
-  const [loginData, setLoginData] = useState({});
-  const [registerData, setRegisterData] = useState({});
   const [openLogin, setOpenLogin] = useState(false);
 
 
@@ -29,10 +25,10 @@ function App() {
     <div className='App'>
       <OpenLoginContext.Provider value={{ openLogin, setOpenLogin }}>
         <Navbar routes={routesNav} />
+        {
+          openLogin == true ? <LoginBox /> : ""
+        }
       </OpenLoginContext.Provider>
-      {
-        openLogin == true ? <LoginBox /> : ""
-      }
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/courses' element={<Courses />} />

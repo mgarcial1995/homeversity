@@ -1,9 +1,10 @@
 import './styles.sass'
 import LoginImage from '../../assets/img/smiling.jpg'
-import { useState } from 'react';
-let userinit = {name: '', lastName: '', date: '', gender: '', email: '', password: ''}
-const RegisterContent = () => {
+import { useState, useContext } from 'react';
+import {TypeLoginContext} from '../LoginBox'
 
+const RegisterContent = () => {
+const {typeLog, setTypeLog} = useContext(TypeLoginContext)
 return (
     <div className='loginContent'>
         <h2 className="title">Registro</h2>
@@ -21,7 +22,7 @@ return (
             <input className="input" type="password" placeholder="Repetir ontraseña" />
 
             <button className="btn">Crear cuenta</button>
-            <p>¿Ya tienes cuenta? <span class="span">Inicia sesión</span></p>
+            <p>¿Ya tienes cuenta? <span className="span" onClick={() =>setTypeLog('login')}>Inicia sesión</span></p>
         </form>
     </div>
 )
