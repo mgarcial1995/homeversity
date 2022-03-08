@@ -1,6 +1,7 @@
 import './styles.sass'
 import { useState } from 'react';
 import LoginImage from '../../assets/img/smiling.jpg'
+import student from '../../assets/img/stu.png'
 
 import LoginContent from '../LoginContent'
 import RegisterContent from '../RegisterContent'
@@ -22,7 +23,7 @@ const LoginBox = () => {
         <div className='background_login' onClick={()=>setOpenLogin(false)}>
         </div>
         <div className="login__container">
-              <img className="imgContent" src={LoginImage} alt=""/>
+              <img className="imgContent" src={student} alt=""/>
               <TypeLoginContext.Provider value={{typeLog, setTypeLog}}>
               {
                 typeLog === 'login' ? <LoginContent /> : <RegisterContent />
