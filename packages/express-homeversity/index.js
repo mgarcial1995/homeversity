@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 
 const coursesRoutes = require("./api/courses/routes");
+const usersRoutes = require("./api/users/routes");
 
 // Server Setup
 const PORT = 3001;
@@ -35,6 +36,7 @@ app.use(cors({
 }));
 
 app.use('/api/courses', coursesRoutes)
+app.use('/api/users', usersRoutes)
 
 app.listen(PORT, () => {
     console.log(`App listening on ${PORT}`);
