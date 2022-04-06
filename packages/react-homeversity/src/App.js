@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LoginBox from "./components/LoginBox";
 import "./App.css";
+import InfoProgramPage from "./views/InfoProgramPage";
 
 export const OpenLoginContext = React.createContext({})
 function App() {
@@ -35,9 +36,10 @@ function App() {
         <Route path='/programs' element={<Programs />} />
         <Route path='/premium' element={<Premium />} />
         <Route path='/carshop' element={<Carshop />} />
+        <Route path='/infoprogram' element={<InfoProgramPage />} />
       </Routes>
       <Footer />
-    </div>
+    </div>  
   );
 }
 
