@@ -1,4 +1,6 @@
 import InfoTag from "../../components/InfoTag";
+import Learning from "../../components/Learning";
+import ProgramCourse from "../../components/ProgramCourse";
 import "./styles.sass";
 function InfoProgramPage() {
   return (
@@ -29,11 +31,13 @@ function InfoProgramPage() {
             <h1 className="program-page-main-section-learning-tittle">
               Aprendizaje esperado
             </h1>
+            <Learning/>
           </article>
           <article className="program-page-main-section-courses">
             <h1 className="program-page-main-section-courses-tittle">
                 Contenido
           </h1>
+          <ProgramCourse/>
           </article> 
         </section>
         <aside className="program-page-main-tags">
