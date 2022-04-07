@@ -5,6 +5,9 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 
 const coursesRoutes = require("./api/courses/routes");
+const teacherRoutes = require("./api/teachers/routes");
+const paymentRoutes = require("./api/payment/routes");
+
 
 // Server Setup
 const PORT = 3001;
@@ -35,6 +38,8 @@ app.use(cors({
 }));
 
 app.use('/api/courses', coursesRoutes)
+app.use('/api/teachers', teacherRoutes)
+app.use('/api/payment', paymentRoutes)
 
 app.listen(PORT, () => {
     console.log(`App listening on ${PORT}`);

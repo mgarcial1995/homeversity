@@ -5,6 +5,7 @@ import courses_home from "../../courses_home";
 import Coursess from "../../components/Coursess";
 import IntroducerCourse from "../../components/IntroducerCourse";
 import React, { useState, useContext, useEffect } from "react";
+import {CardShopModal} from "../../App"
 
 export const OpenIntroCourse = React.createContext({})
 import "./styles.sass";
@@ -14,6 +15,8 @@ function Home() {
   const [showIntroCourse, setShowIntroCourse] = useState(false)
   const [dataCourse, setDataCourse] = useState({})
   const [listCourses, setListCourses] = useState([])
+  const {modalCard, setModalCard} = useContext(CardShopModal)
+ 
   
   useEffect(() => {
     fetch('http://localhost:3001/api/courses/', {
@@ -35,7 +38,7 @@ function Home() {
   return (
     <div>
       <Header />
-        <OpenIntroCourse.Provider value={{showIntroCourse, setShowIntroCourse }}>
+        <OpenIntroCourse.Provider value={{showIntroCourse, setShowIntroCourse}}>
           {showIntroCourse == true ? <IntroducerCourse courseData={dataCourse}/> : ""}
           <main className='box1'>
             <div className='box2'>
