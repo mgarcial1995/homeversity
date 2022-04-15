@@ -9,9 +9,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LoginBox from "./components/LoginBox";
 import "./App.css";
+import InfoProgramPage from "./views/InfoProgramPage";
+import ModalCardShop from "./components/ModalCardShop";
 
 export const OpenLoginContext = React.createContext({})
 export const UserDataContext = React.createContext({})
+export const CardShopModal = React.createContext([]);
 let user = {
   "name": "",
   "surname": "",
@@ -30,6 +33,7 @@ function App() {
     { name: "MEMBRESIA", url: "/premium" },
   ];
   const [openLogin, setOpenLogin] = useState(false);
+  const [modalCard, setModalCard] = useState([]);
   const [userData, setUserData] = useState(user)
   const [userLogged, setUserLogged] = useState({})
 
@@ -40,24 +44,26 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <UserDataContext.Provider value={{userData, setUserData, changeUserData}}>
-        <OpenLoginContext.Provider value={{ openLogin, setOpenLogin }}>
-          <Navbar routes={routesNav} />
-          {
-            openLogin == true ? <LoginBox /> : ""
-          }
-        </OpenLoginContext.Provider>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/programs' element={<Programs />} />
-          <Route path='/premium' element={<Premium />} />
-          <Route path='/carshop' element={<Carshop />} />
-        </Routes>
-        <Footer />
-      </UserDataContext.Provider>
-    </div>
+    <div className="App">
+      
+        <UserDataContext.Provider value={{userData, setUserData, changeUserData}}>
+      <CardShopModal.Provider value = {{modalCard, setModalCard}}>
+          <OpenLoginContext.Provider value={{ openLogin, setOpenLogin }}>
+            <Navbar routes={routesNav} />
+            {openLogin == true ? <LoginBox /> : ""}
+          </OpenLoginContext.Provider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/programs" element={<Programs />} />
+            <Route path="/premium" element={<Premium />} />
+            <Route path="/carshop" element={<Carshop />} />
+            <Route path='/infoprogram' element={<InfoProgramPage />} />
+          </Routes>
+      </CardShopModal.Provider>
+        </UserDataContext.Provider>
+      <Footer />
+    </div>  
   );
 }
 

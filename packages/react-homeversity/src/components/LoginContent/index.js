@@ -13,7 +13,11 @@ const LoginContent = () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userLog)})
-        .then(response => console.log(response))    
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err=>{
+            console.log(err)
+        })
     }
 return (
     <div className="loginContent">
