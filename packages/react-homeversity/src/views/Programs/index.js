@@ -1,4 +1,5 @@
 import Programss from "../../components/Programss";
+import { Link } from "react-router-dom";
 import Search from "../../components/Search";
 import React, { useState } from "react";
 export const FilterContext = React.createContext({});
@@ -29,7 +30,9 @@ function Programs() {
         value={{ selectedFilter, setFilter, renderBy, setRenderBy }}
       >
         <Search />
+        <Link to="/infoprogram">
         <Programss />
+        </Link>
       </FilterContext.Provider>
       {console.log(renderBy)}
     </div>
