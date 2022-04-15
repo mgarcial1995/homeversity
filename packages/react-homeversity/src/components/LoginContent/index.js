@@ -4,14 +4,25 @@ import { useState, useContext} from 'react';
 import {TypeLoginContext} from '../LoginBox'
 const LoginContent = () => {
     const {typeLog, setTypeLog} = useContext(TypeLoginContext)
+    const [userLog, setUserLog] = useState({email:'', password:''})
+
+    let singinUser = async (event) => {
+        // console.log(userLog)
+        event.preventDefault()
+        await fetch('http://localhost:3001/api/users/signin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userLog)})
+        .then(response => console.log(response))    
+    }
 return (
     <div className="loginContent">
         <h2 className="title">Iniciar Sesión</h2>
         <form className="formContent" >
-            <input className="input" type="text" placeholder="Correo de registro" />
-            <input className="input" type="password" placeholder="Contraseña" />
+            <input value={userLog.email} onChange={(e)=>setUserLog({...userLog, email: e.target.value})} className="input" type="text" placeholder="Correo de registro" />
+            <input value={userLog.password} onChange={(e)=>setUserLog({...userLog, password: e.target.value})} className="input" type="password" placeholder="Contraseña" />
 
-            <button className="btn">Ingresar</button>
+            <button onClick={(e)=>singinUser(e)} className="btn">Ingresar</button>
             <p>¿Aun no tienes cuenta? <span className="span" onClick={()=>setTypeLog('register')}>Regístrate</span></p>
         </form>
     </div>

@@ -8,14 +8,13 @@ const RegisterContent = () => {
 const {typeLog, setTypeLog} = useContext(TypeLoginContext)
 const {userData, setUserData, changeUserData} = useContext(UserDataContext)
 
-let createUser = (event) => {
+let createUser = async (event) => {
     event.preventDefault()
-    console.log(userData)
-    fetch('http://localhost:3001/api/users/create', {
+    await fetch('http://localhost:3001/api/users/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)})
-    .then(response => console.log(response))
+        .then(response => console.log(response))
 }
 
 return (

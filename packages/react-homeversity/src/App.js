@@ -22,12 +22,6 @@ let user = {
   "passWord": "",
   "confirmPassword": "",
   "email": "",
-  "premiumID": "",
-  "initPremium": "",
-  "finishPremium": "",
-  "courses": [],
-  "descriptTeacher": "",
-  "jobTeacher": ""
 }
 function App() {
   const routesNav = [
@@ -37,12 +31,12 @@ function App() {
   ];
   const [openLogin, setOpenLogin] = useState(false);
   const [userData, setUserData] = useState(user)
+  const [userLogged, setUserLogged] = useState({})
 
   let changeUserData = (event) => {
     let newuserdata = Object.assign({}, userData)
     newuserdata[event.target.name] = event.target.value
     setUserData(newuserdata)
-    console.log(newuserdata)
   }
 
   return (
