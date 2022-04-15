@@ -3,9 +3,11 @@ import "./styles.sass";
 import Coursess from "../../components/Coursess";
 import allCourses from "../../allCourses";
 
+
 function Courses() {
   return (
     <div>
+    
       <div className="box2">
         <div className="seeker">
           <p className="text0">
