@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
 const CoursesController = require('./controller')
+const {verifyToken} = require('../../middleweres/auth')
 
 router.get('/', CoursesController.getAllCourses);
 router.post('/create', CoursesController.newCourse);
