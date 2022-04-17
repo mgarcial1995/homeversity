@@ -1,4 +1,6 @@
 const UserModel = require("./model");
+const StudentModel = require("../students/model");
+const TeachersModel = require("../teachers/model");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
@@ -16,6 +18,7 @@ exports.getAllUsers = (req, res) => {
 };
 exports.signinUser = async (req, res) => {
   const user = await UserModel.findOne({email: req.body.email})
+  const typeUser = user.typeUser === 'student' ? await StudentModel.findOne({userID: user._id}) : TeachersModel({userID: user._id})
   if(!user){
     return res.status(400).json({message:"El usuario no existe"}) 
   }
@@ -23,8 +26,13 @@ exports.signinUser = async (req, res) => {
   if(!isValid) return res.status(401).json({token: null, message: "Invalid password"})
   const token = jwt.sign({id: user._id}, 'user', {
     expiresIn: 86400 //24hrs
-  }) 
-  res.json({token: token})
+  })
+  let userdata = {
+    typeUser,
+    name: user.name,
+    surname: user.surname
+  }
+  res.json({token, userdata})
 }
 exports.signupUser = async (req, res) => {
   const body = req.body;
@@ -40,6 +48,31 @@ exports.signupUser = async (req, res) => {
     passWord: await UserModel.encryptPassword(body.passWord),
     email: body.email
   });
+
+  if(User.typeUser == 'student'){
+    const Student = new StudentModel ({
+      userID: User._id,
+      courses: [],
+      programs: [],
+      carshop: [],
+      premiumID: null,
+      initPremium: null,
+      finishPremium: null
+    })
+    await Student.save()
+  }else{
+    const Teacher = TeachersModel({
+      name: body.name,
+      description: body.description,
+      photo: body.photo,
+      job: body.job,
+      courses: [
+          {idCourse:null}
+      ],
+      idUser: User._id
+    })
+    await Teacher.save()
+  }
   await User.save()
     .then((response) => {
       let token = jwt.sign({id: response._id}, 'user', {

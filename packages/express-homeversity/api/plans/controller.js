@@ -1,7 +1,3 @@
-const FyleSync = require('lowdb/adapters/FileSync');
-const adapter = new FyleSync('db.json');
-const lowdDB = require('lowdb');
-const db = lowdDB(adapter);
 const PlanModel = require('./model')
 const mongoose = require("mongoose")
 

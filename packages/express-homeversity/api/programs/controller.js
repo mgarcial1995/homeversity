@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { Model, programFields, coursesRef } = require('./model');
 const referencesNames = Object.getOwnPropertyNames(coursesRef);
 
@@ -6,6 +7,14 @@ exports.getAllPrograms = (req, res) => {
     const all = Model.find({}).populate(populate)
     all.exec().then(response =>{
         res.status(200).json({ success: true, teacher: response })
+=======
+const ProgramModel = require('./model')
+const mongoose = require("mongoose")
+
+exports.getAllPrograms = (req, res) =>{
+    ProgramModel.find().exec().then(response =>{
+        res.status(200).json({ success: true, programs: response })
+>>>>>>> 9b054df6758c99476bfc7e5ee95be1618cf058a2
     }).catch(err => {
         console.log(err);
         res.status(400).json({ success: false, error: err})
