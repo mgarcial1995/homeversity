@@ -1,14 +1,24 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose;
 
-const teacherSchema = new mongoose.Schema({
+const teacherFields =({
     name: { type: String},
     description: { type: String},
     photo: { type: String},
     job: { type: String},
-    courses: [
-        {idCourse:{type: String}}
-    ],
     idUser: {type:String}
-  
 });
-module.exports = mongoose.model('teachers', teacherSchema);
+const coursesRef = {
+    courseId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Courses',
+        required: true
+    } 
+}
+const teacherSchema = Schema(Object.assign(teacherFields, coursesRef));
+module.exports ={
+   Model: mongoose.model('teachers', teacherSchema),
+   teacherFields,
+   coursesRef
+}
+
