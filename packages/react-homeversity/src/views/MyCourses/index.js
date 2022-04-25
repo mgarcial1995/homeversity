@@ -1,6 +1,8 @@
 import "./styles.sass";
 import download from '../../assets/img/download.png'
-import {useState} from "react"
+import {useState, useContext, useEffect} from "react"
+import { UserEnterContext } from '../../App'
+
 let allcourses = [
   {
     photo: "https://www.cocinayvino.com/wp-content/uploads/2020/04/123864572_m-e1588006506154.jpg",
@@ -34,7 +36,25 @@ let allcourses = [
   },
 ]
 function MyCourses() {
-  const [courses, setCourses] = useState(allcourses)
+  const { userLogged, setUserLogged } = useContext(UserEnterContext)
+  const [courses, setCourses] = useState([])
+  useEffect(()=>{
+    let sessionID = JSON.parse(localStorage.getItem("idSession"));
+    if(sessionID){
+      fetch(`http://localhost:3001/api/users/${sessionID}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }})
+        .then(response => response.json())
+        .then(data => {
+          setCourses(data.userdata.typeUser.courses)
+          console.log(data.userdata)
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+    }
+    // setCourses(userLogged.typeUser.courses)
+  },[])
   return (
     <div className="myCourses">
       <p className="myCourses_title">Mis cursos</p>
@@ -49,14 +69,14 @@ function MyCourses() {
         </div>
         {courses.map(coursedata => {
           return (
-          <div className="myCourses_container_info">
+          <div key={coursedata._id} className="myCourses_container_info">
             <div className="myCourses_container_info_name">
               <div className="myCourses_container_info_name_photo">
                 <img className="myCourses_container_info_name_photo_img" src={coursedata.photo} alt="Cambio" ></img>
               </div>
               <div className="myCourses_container_info_name_text">
                 <div className="myCourses_container_info_name_text_name">{coursedata.name}</div>
-                <div className="myCourses_container_info_name_text_teacher">{coursedata.teacher}</div>
+                <div className="myCourses_container_info_name_text_teacher">Profesor: {coursedata.teacher.name}</div>
               </div>
             </div>
             <div className="myCourses_container_info_access">Obtenido</div>

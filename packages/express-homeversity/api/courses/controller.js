@@ -1,40 +1,52 @@
-const CourseModel = require('./model')
 const mongoose = require("mongoose")
+const {Model, teachersRef, courseFields} = require('./model')
+const referencesNames = Object.getOwnPropertyNames(teachersRef);
 
-exports.getCourseById = (req, res) =>{
-    CourseModel.findById(req.params.id).exec().then(response =>{
-        res.status(200).json({ success: true, course: response })
+// exports.getCourseById = (req, res) =>{
+//     const populate = referencesNames.join(' ');
+//     CourseModel.findById(req.params.id).populate(populate).exec().then(response =>{
+//         res.status(200).json({ success: true, course: response })
+//     }).catch(err => {
+//         console.log(err);
+//         res.status(400).json({ success: false, error: err})
+//     })
+// }
+exports.getAllCourses = async (req, res) => {
+    const populate = referencesNames.join(' ');
+    const all = Model.find({}).populate(populate);
+    await all.exec()
+    .then(response =>{
+        console.log(response);
+        res.status(200).json({ success: true, courses: response });
     }).catch(err => {
         console.log(err);
-        res.status(400).json({ success: false, error: err})
+        res.status(400).json({ success: false, error: err});
     })
-}
-exports.getAllCourses = (req, res) =>{
-    // const courses = db.get('courses').value(); // query
-    CourseModel.find().exec().then(response =>{
-        res.status(200).json({ success: true, courses: response })
-    }).catch(err => {
+};
+exports.getCourseById = async (req, res) => {
+    const populate = referencesNames.join(' ');
+    const {id = null} = req.params;
+    const Course = Model.findById(id).populate(populate);
+    await Course.exec()
+    .then(response => {
+        if (!Course) {
+            const message = `${Model.modelName} not found`;
+            console.log(message);
+        }else{
+            console.log(response);
+            res.status(200).json({ success: true, message: 'Course has been found', data: response })
+        }  
+    })
+    .catch(err => {
         console.log(err);
-        res.status(400).json({ success: false, error: err})
-    })
-}
+        res.status(400).json({ success: false, error: err });
+    }
+    );
+};
 exports.newCourse = async (req, res) =>{
-    const body = req.body
-
-    const Courses = new CourseModel({
-        name: body.name,
-        description: body.description,
-        valoration: body.valoration,
-        teacher: body.teacher,
-        price: body.price,
-        photo: body.photo,
-        introducer_video: body.introducer_video,
-        hours: body.hours,
-        level: body.level,
-        category: body.category,
-        class: body.class
-    });
-    await Courses.save()
+    const body = req.body;
+    const Course = new Model(body);
+    await Course.save()
         .then(response =>{
             console.log(response)
             res.status(200).json({ success: true, message: 'Course has been created', data: response })
@@ -46,9 +58,8 @@ exports.newCourse = async (req, res) =>{
     );
 }
 exports.deleteCourseByID = (req, res) =>{
-    // const courses = db.get('courses').value(); // query
     const id = req.params.id
-    CourseModel.findByIdAndDelete(id).then(response =>{
+    Model.findByIdAndDelete(id).then(response =>{
         res.status(200).json({ success: true, message:"Course deleted" })
     }).catch(err => {
         console.log(err);
@@ -56,8 +67,7 @@ exports.deleteCourseByID = (req, res) =>{
     })
 }
 exports.deleteAllCourses = (req, res) =>{
-    // const courses = db.get('courses').value(); // query
-    CourseModel.deleteMany().then(response =>{
+    Model.deleteMany().then(response =>{
         res.status(200).json({ success: true, message:"All courses delete" })
     }).catch(err => {
         console.log(err);
@@ -65,10 +75,9 @@ exports.deleteAllCourses = (req, res) =>{
     })
 }
 exports.updateCourseById = (req, res) =>{
-    // const courses = db.get('courses').value(); // query
     const id = req.params.id
     const body = req.body
-    CourseModel.findByIdAndUpdate(id, body, {new: true}).then(response =>{
+    Model.findByIdAndUpdate(id, body, {new: true}).then(response =>{
         res.status(200).json({ success: true, message:"Course update", data: response })
     }).catch(err => {
         console.log(err);

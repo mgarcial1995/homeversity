@@ -1,6 +1,7 @@
 const UserModel = require("./model");
 const StudentModel = require("../students/model");
 const TeachersModel = require("../teachers/model");
+// const {Model, teachersRef, courseFields} = require('./model')
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
@@ -12,10 +13,10 @@ exports.getUserId = async (req, res) => {
       : TeachersModel({ userID: user._id });
   let userdata = {
     typeUser,
-    name: user.name+' '+user.surname,
+    name: user.name + " " + user.surname,
   };
   res.json({ userdata });
-}
+};
 exports.getAllUsers = (req, res) => {
   // const courses = db.get('courses').value(); // query
   UserModel.find()
@@ -50,7 +51,7 @@ exports.signinUser = async (req, res) => {
     typeUser,
     name: user.name,
     surname: user.surname,
-    id: user._id
+    id: user._id,
   };
   res.json({ token, userdata });
 };
@@ -81,14 +82,13 @@ exports.signupUser = async (req, res) => {
     });
     await Student.save();
   } else {
-    const Teacher =await  TeachersModel({
+    const Teacher = await TeachersModel({
       name: body.name,
       description: body.description,
       photo: body.photo,
       job: body.job,
       idUser: User._id,
     });
-    console.log("teacheeer", Teacher);
     await Teacher.save();
   }
   await User.save()

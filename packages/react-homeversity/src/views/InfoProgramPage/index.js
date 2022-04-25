@@ -1,8 +1,13 @@
 import InfoTag from "../../components/InfoTag";
 import Learning from "../../components/Learning";
 import ProgramCourse from "../../components/ProgramCourse";
+import {useParams} from "react-router-dom";
 import "./styles.sass";
+
+
+
 function InfoProgramPage() {
+  const {id} = useParams();
   return (
     <div className="program-page">
       <header className="program-page-banner">
@@ -31,14 +36,14 @@ function InfoProgramPage() {
             <h1 className="program-page-main-section-learning-tittle">
               Aprendizaje esperado
             </h1>
-            <Learning/>
+            <Learning />
           </article>
           <article className="program-page-main-section-courses">
             <h1 className="program-page-main-section-courses-tittle">
-                Contenido
-          </h1>
-          <ProgramCourse/>
-          </article> 
+              Contenido
+            </h1>
+            <ProgramCourse />
+          </article>
         </section>
         <aside className="program-page-main-tags">
           <InfoTag></InfoTag>

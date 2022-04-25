@@ -8,7 +8,7 @@ const CoursesOnCar = (props) => {
         <div className="product">
           <img className="course-photo" src={photo}></img>
           <div className="course-primary-info">
-            <h1 className="course-name">{name}</h1>
+            <p className="course-name">{name}</p>
             <p className="course-price">S/{price}</p>
           </div>
         </div>

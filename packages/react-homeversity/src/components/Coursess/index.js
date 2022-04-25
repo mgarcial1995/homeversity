@@ -12,10 +12,7 @@ let cutString = (str) => {
 };
 
 const Coursess = ({ data }) => {
- 
-  
   const { modalCard, setModalCard } = useContext(CardShopModal);
-
   let star = [];
   let val = data.valoration ? data.valoration : data.stars;
   if (val == 1) star = [1];
@@ -28,7 +25,6 @@ const Coursess = ({ data }) => {
     let copyModal = [...modalCard];
     copyModal.push(data);
     setModalCard(copyModal);
-    // console.log(copyModal);
   };
 
   return (
@@ -45,7 +41,7 @@ const Coursess = ({ data }) => {
             </Link>
           </div>
           <h2 className="box-main_box-child-1_h4 ">{data.name} </h2>
-          <p className="box-main_box-child-1_p ">Por {data.teacher} </p>
+          <p className="box-main_box-child-1_p ">Por {data.teacher.name} </p>
           <p className="box-main_box-child-1_p">
             {" "}
             {data.description

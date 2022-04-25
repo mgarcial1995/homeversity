@@ -5,10 +5,9 @@ const teacherSchema = new mongoose.Schema({
     description: { type: String},
     photo: { type: String},
     job: { type: String},
-    courses: [
-        {idCourse:{type: String}}
-    ],
     idUser: {type:String}
     
 });
-module.exports = mongoose.model('teachers', teacherSchema);
+
+module.exports =mongoose.model('teachers',teacherSchema)
+

@@ -83,9 +83,10 @@ function App() {
               <Route path="/premium" element={<Premium />} />
               <Route path="/carshop" element={<Carshop />} />
               <Route path="/mycourses" element={<MyCourses />} />
-              <Route path="/class" element={<ClassCourse />} />
+              <Route path="/class/:id" element={<ClassCourse />} />
               <Route path='/infoprogram' element={<InfoProgramPage />} />
               <Route path="/infocourse/:id" element={<InfoCoursePage />} />
+              <Route path="/programs/infoprogram/:id" element={<InfoProgramPage />} />
             </Routes>
           </CardShopModal.Provider>
         </UserDataContext.Provider>

@@ -1,12 +1,10 @@
-// const joi = require('joi');
-const mongoose = require('mongoose')
-
-const courseSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const { collection } = require('../users/model');
+const { Schema } = mongoose;
+const courseFields ={
     name: { type: String},
     description: { type: String},
     valoration: { type: String},
-    teacher: { type: String},
-    price: { type: String},
     photo: { type: String},
     introducer_video: { type: String},
     hours: { type: String},
@@ -20,9 +18,22 @@ const courseSchema = new mongoose.Schema({
             link_video: { type: String}
         }
     ]
-},
-{
-    collection: 'Courses'
-});
-module.exports = mongoose.model('Courses', courseSchema);
-// module.exports = courseSchema
+}
+;
+const teachersRef = {
+    teacher: {
+        type: Schema.Types.ObjectId,
+        ref: 'teachers',
+        // required: true
+    } 
+ };
+
+const courseSchema = Schema(Object.assign(courseFields, teachersRef),{collection:"Courses"})
+
+module.exports = {
+    Model: mongoose.model('Courses', courseSchema),
+    courseFields,
+    teachersRef
+}
+
+

@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom"
 import play from "../../assets/img/play-button.png"
 
 function ClassCourse() {
+  const { id } = useParams();
   return (
     <div className="class">
       <p className="class_title">Nombre de curso</p>

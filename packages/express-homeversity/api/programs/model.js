@@ -1,22 +1,25 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose;
 
-const programSchema = new mongoose.Schema({
+const programFields = ({
     name: { type: String},
+    description: { type: String},
     duration: {type: String},
     photo: { type: String},
     category: { type: String},
     price: { type: String},
-    duration: {type: String},
-    courses: [
-        {
-            title:{ type: String},
-            description: { type: String},
-            duration: { type: String},
-            link_video: { type: String}
-        }
-    ]
-},
-{
-    collection: 'Programs'
+    learning: {type: Array}
 });
-module.exports = mongoose.model('Programs', programSchema);
+const coursesRef = {
+    courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Courses'
+    }]
+}
+const programSchema = Schema(Object.assign(programFields, coursesRef), {collection:"Programs"});
+
+module.exports = {
+    Model: mongoose.model('Programs', programSchema),
+    programFields,
+    coursesRef
+};

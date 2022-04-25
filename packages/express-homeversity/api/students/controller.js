@@ -12,6 +12,18 @@ exports.getAllStudents = (req, res) => {
       res.status(400).json({ success: false, error: err });
     });
 };
+exports.getStudent = (req, res) => {
+  // const courses = db.get('courses').value(); // query
+  StudentModel.findById(req.params.id)
+    .exec()
+    .then((response) => {
+      res.status(200).json({ success: true, student: response });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ success: false, error: err });
+    });
+};
 exports.createStudent = async (req, res) => {
   const body = req.body;
 
