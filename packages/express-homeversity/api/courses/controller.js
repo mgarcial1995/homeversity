@@ -1,6 +1,14 @@
 const CourseModel = require('./model')
 const mongoose = require("mongoose")
 
+exports.getCourseById = (req, res) =>{
+    CourseModel.findById(req.params.id).exec().then(response =>{
+        res.status(200).json({ success: true, course: response })
+    }).catch(err => {
+        console.log(err);
+        res.status(400).json({ success: false, error: err})
+    })
+}
 exports.getAllCourses = (req, res) =>{
     // const courses = db.get('courses').value(); // query
     CourseModel.find().exec().then(response =>{

@@ -9,6 +9,6 @@ const teacherSchema = new mongoose.Schema({
         {idCourse:{type: String}}
     ],
     idUser: {type:String}
-  
+    
 });
 module.exports = mongoose.model('teachers', teacherSchema);

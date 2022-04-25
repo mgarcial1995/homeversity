@@ -2,9 +2,11 @@ import './styles.sass'
 import LoginImage from '../../assets/img/smiling.jpg'
 import { useState, useContext} from 'react';
 import {TypeLoginContext} from '../LoginBox'
-const LoginContent = () => {
+import {UserEnterContext} from '../../App'
+const LoginContent = ({setOpenLogin}) => {
     const {typeLog, setTypeLog} = useContext(TypeLoginContext)
-    const [userLog, setUserLog] = useState({email:'', password:''})
+    const {userLogged, setUserLogged} = useContext(UserEnterContext)
+    const [userLog, setUserLog] = useState({email:'martingarcial.1995@gmail.com', password:'123'})
 
     let singinUser = async (event) => {
         // console.log(userLog)
@@ -14,7 +16,14 @@ const LoginContent = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userLog)})
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            setOpenLogin(false)
+            setUserLogged(data.userdata)
+            console.log("data",data.userdata)
+            localStorage.setItem("token", JSON.stringify(data.token))
+            localStorage.setItem("idSession", JSON.stringify(data.userdata.id))
+        })
         .catch(err=>{
             console.log(err)
         })
