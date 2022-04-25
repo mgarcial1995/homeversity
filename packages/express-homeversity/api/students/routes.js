@@ -8,5 +8,6 @@ router.post('/create', StudentsController.createStudent);
 router.delete('/deleteAll', StudentsController.deleteAllStudent);
 router.delete('/delete/:id', StudentsController.deleteStudent);
 router.put('/update/:id', StudentsController.updateStudent);
+router.put('/updatebyID/:id', StudentsController.addCourseUser);
 
 module.exports = router

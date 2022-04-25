@@ -12,24 +12,25 @@ import Footer from "./components/Footer";
 import LoginBox from "./components/LoginBox";
 import "./App.css";
 import InfoProgramPage from "./views/InfoProgramPage";
+import InfoCoursePage from "./views/InfoCoursePage";
 import ModalCardShop from "./components/ModalCardShop";
 
-export const OpenLoginContext = React.createContext({})
-export const UserDataContext = React.createContext({})
+export const OpenLoginContext = React.createContext({});
+export const UserDataContext = React.createContext({});
 export const CardShopModal = React.createContext([]);
 export const UserEnterContext = React.createContext({});
 
 let user = {
-  "name": "",
-  "surname": "",
-  "bornDate": "",
-  "gender": "",
-  "carShop": [],
-  "typeUser": "",
-  "passWord": "",
-  "confirmPassword": "",
-  "email": ""
-}
+  name: "",
+  surname: "",
+  bornDate: "",
+  gender: "",
+  carShop: [],
+  typeUser: "",
+  passWord: "",
+  confirmPassword: "",
+  email: "",
+};
 function App() {
   const routesNav = [
     { name: "CURSOS", url: "/courses" },
@@ -42,10 +43,10 @@ function App() {
   const [userLogged, setUserLogged] = useState(null)
 
   let changeUserData = (event) => {
-    let newuserdata = Object.assign({}, userData)
-    newuserdata[event.target.name] = event.target.value
-    setUserData(newuserdata)
-  }
+    let newuserdata = Object.assign({}, userData);
+    newuserdata[event.target.name] = event.target.value;
+    setUserData(newuserdata);
+  };
 
   useEffect(()=>{
     let token = localStorage.getItem("token");
@@ -58,6 +59,7 @@ function App() {
         .then(response => response.json())
         .then(data => {
           setUserLogged(data.userdata)
+          console.log(data.userdata)
         })
         .catch(err=>{
           console.log(err)
@@ -83,12 +85,13 @@ function App() {
               <Route path="/mycourses" element={<MyCourses />} />
               <Route path="/class" element={<ClassCourse />} />
               <Route path='/infoprogram' element={<InfoProgramPage />} />
+              <Route path="/infocourse/:id" element={<InfoCoursePage />} />
             </Routes>
           </CardShopModal.Provider>
         </UserDataContext.Provider>
       </UserEnterContext.Provider>
       <Footer />
-    </div>  
+    </div>
   );
 }
 
