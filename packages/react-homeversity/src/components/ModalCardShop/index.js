@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./styles.sass";
 import CourseSelect from "../CourseSelect";
 import { CardShopModal } from "../../App";
+import { Link } from "react-router-dom";
 
 function ModalCardShop() {
   const { modalCard, setModalCard } = useContext(CardShopModal);
@@ -35,9 +36,9 @@ function ModalCardShop() {
           Total <spam>S/. {total}</spam>
         </p>
         <div className="detailShoping">
-        {/* <Link to="/carshop"> */}
+        <Link to="/carshop">
          <button className="detailShoping-button"> Ir a detalle de compra </button>
-         {/* </Link> */}
+         </Link>
         </div>
       </div>
     </>
