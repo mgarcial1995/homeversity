@@ -36,7 +36,7 @@ const Coursess = ({ data }) => {
           />
         </div>
         <h2 className="box-main_box-child-1_h4 ">{data.name} </h2>
-        <p className="box-main_box-child-1_p ">Por {data.teacher} </p>
+        <p className="box-main_box-child-1_p ">Por {data.teacher===null ? "":data.teacher.name} </p>
         <p className="box-main_box-child-1_p">
           {" "}
           {data.description

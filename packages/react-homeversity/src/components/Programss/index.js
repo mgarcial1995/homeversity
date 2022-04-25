@@ -2,26 +2,25 @@ import "./styles.sass";
 import Carshop from "../../assets/img/shopcart.png";
 import React, { useState, useContext } from "react";
 
-const Programss = ({}) => {
+const Programss = ({program}) => {
+  console.log(program)
   return (
     <>
       <div className="program-card">
         <div className="photo-card-photo">
         <img
           className="program-card-photo-src"
-          src={
-            "https://d2qc4bb64nav1a.cloudfront.net/cdn/13/images/curso-online-electricidad-y-electronica_l_primaria_1_1527681570.jpg"
-          }
+          src={program.photo}
         />
         </div>
         <div className="program-card-info">
-          <h2 className="program-card-info-name"> Excel avanzado </h2>
+          <h2 className="program-card-info-name"> {program.name} </h2>
           <div className="program-card-info-separator"></div>
           <p className="program-card-info-duration">
-            <strong className="program-card-info-duration-tittle">Duración: </strong> 1 Mes y medio (Dedicacion 5 horas por semana)
+            <strong className="program-card-info-duration-tittle">Duración: </strong> {program.duration}
           </p>
           <p className="program-card-info-include">
-            <strong className="program-card-info-include-tittle">Incluye: </strong>4 cursos
+            <strong className="program-card-info-include-tittle">Incluye: </strong> {program.courses.length} cursos
           </p>
         </div>
       </div>

@@ -45,9 +45,9 @@ function App() {
 
   return (
     <div className="App">
-      
-        <UserDataContext.Provider value={{userData, setUserData, changeUserData}}>
-      <CardShopModal.Provider value = {{modalCard, setModalCard}}>
+
+      <UserDataContext.Provider value={{ userData, setUserData, changeUserData }}>
+        <CardShopModal.Provider value={{ modalCard, setModalCard }}>
           <OpenLoginContext.Provider value={{ openLogin, setOpenLogin }}>
             <Navbar routes={routesNav} />
             {openLogin == true ? <LoginBox /> : ""}
@@ -58,12 +58,12 @@ function App() {
             <Route path="/programs" element={<Programs />} />
             <Route path="/premium" element={<Premium />} />
             <Route path="/carshop" element={<Carshop />} />
-            <Route path='/infoprogram' element={<InfoProgramPage />} />
+            <Route path="/programs/infoprogram/:id" element={<InfoProgramPage />} />
           </Routes>
-      </CardShopModal.Provider>
-        </UserDataContext.Provider>
+        </CardShopModal.Provider>
+      </UserDataContext.Provider>
       <Footer />
-    </div>  
+    </div>
   );
 }
 

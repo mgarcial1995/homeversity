@@ -66,9 +66,6 @@ exports.signupUser = async (req, res) => {
       description: body.description,
       photo: body.photo,
       job: body.job,
-      courses: [
-          {idCourse:null}
-      ],
       idUser: User._id
     })
     await Teacher.save()
