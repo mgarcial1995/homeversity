@@ -22,12 +22,6 @@ function Courses() {
     <div>
     
       <div className="box2">
-        <div className="seeker">
-          <p className="text0">
-            <strong> Search in Homeversity </strong>
-            <img className="lupa" src="./lupa.png" />
-          </p>
-        </div>
         <div className="text1">
           <h1>Contenido Homeversity</h1>
         </div>
@@ -42,11 +36,7 @@ function Courses() {
             </h2>
           </div>
         </div>
-        <div className="container_text3">
-          <h2>
-            <strong> Restablecer filtros</strong>
-          </h2>
-        </div>
+
       </div>
     <hr color= "black" size= "1"/>
     <section className="box_box2">
