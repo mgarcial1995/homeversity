@@ -15,8 +15,6 @@ let loginuser = {name: '', lastName: '', date: '', gender: '', email: '', passwo
 let userinit = {name: '', lastName: '', date: '', gender: '', email: '', password: ''}
 const LoginBox = () => {
     const [typeLog, setTypeLog] = useState("login");
-    const [loginData, setLoginData] = useState({});
-    const [registerData, setRegisterData] = useState({});
     const { openLogin, setOpenLogin } = useContext(OpenLoginContext);
     return (
       <div>
@@ -26,7 +24,7 @@ const LoginBox = () => {
               <img className="imgContent" src={student} alt=""/>
               <TypeLoginContext.Provider value={{typeLog, setTypeLog}}>
               {
-                typeLog === 'login' ? <LoginContent /> : <RegisterContent />
+                typeLog === 'login' ? <LoginContent setOpenLogin={setOpenLogin} /> : <RegisterContent setOpenLogin={setOpenLogin} />
               }
               </TypeLoginContext.Provider>
         </div>

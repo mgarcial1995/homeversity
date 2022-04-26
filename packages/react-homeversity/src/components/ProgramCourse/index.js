@@ -1,5 +1,6 @@
 import "./styles.sass";
 const ProgramCourse = ({course , index}) => {
+  console.log(course)
   return (
     <div className="programcourse">
       <img className="programcourse-photo" src={course.photo}></img>

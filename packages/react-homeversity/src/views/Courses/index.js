@@ -1,10 +1,23 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./styles.sass";
 import Coursess from "../../components/Coursess";
 import allCourses from "../../allCourses";
 
 
 function Courses() {
+  const [courses, setCourses] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:3001/api/courses/', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(response =>  {
+        console.log(response.courses)
+        setCourses(response.courses)})
+  }, [])
   return (
     <div>
     
@@ -37,7 +50,7 @@ function Courses() {
       </div>
     <hr color= "black" size= "1"/>
     <section className="box_box2">
-          {allCourses.map((course) => {
+          {courses.map((course) => {
             return <Coursess key={course.id} data={course} />;
           })}
     </section>

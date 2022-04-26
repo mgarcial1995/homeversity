@@ -25,9 +25,6 @@ function Programs() {
         setListPrograms(response.programs)
       })
   }, []);
-
-
-
   return (
     <div>
       <FilterContext.Provider

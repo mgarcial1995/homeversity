@@ -2,7 +2,15 @@ const mongoose = require("mongoose")
 const {Model, teachersRef, courseFields} = require('./model')
 const referencesNames = Object.getOwnPropertyNames(teachersRef);
 
-
+// exports.getCourseById = (req, res) =>{
+//     const populate = referencesNames.join(' ');
+//     CourseModel.findById(req.params.id).populate(populate).exec().then(response =>{
+//         res.status(200).json({ success: true, course: response })
+//     }).catch(err => {
+//         console.log(err);
+//         res.status(400).json({ success: false, error: err})
+//     })
+// }
 exports.getAllCourses = async (req, res) => {
     const populate = referencesNames.join(' ');
     const all = Model.find({}).populate(populate);
@@ -16,8 +24,9 @@ exports.getAllCourses = async (req, res) => {
     })
 };
 exports.getCourseById = async (req, res) => {
+    const populate = referencesNames.join(' ');
     const {id = null} = req.params;
-    const Course = Model.findById(id);
+    const Course = Model.findById(id).populate(populate);
     await Course.exec()
     .then(response => {
         if (!Course) {
@@ -25,7 +34,7 @@ exports.getCourseById = async (req, res) => {
             console.log(message);
         }else{
             console.log(response);
-        res.status(200).json({ success: true, message: 'Course has been found', data: response })
+            res.status(200).json({ success: true, message: 'Course has been found', data: response })
         }  
     })
     .catch(err => {

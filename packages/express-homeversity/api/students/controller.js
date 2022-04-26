@@ -12,6 +12,18 @@ exports.getAllStudents = (req, res) => {
       res.status(400).json({ success: false, error: err });
     });
 };
+exports.getStudent = (req, res) => {
+  // const courses = db.get('courses').value(); // query
+  StudentModel.findById(req.params.id)
+    .exec()
+    .then((response) => {
+      res.status(200).json({ success: true, student: response });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ success: false, error: err });
+    });
+};
 exports.createStudent = async (req, res) => {
   const body = req.body;
 
@@ -68,6 +80,44 @@ exports.updateStudent = (req, res) => {
   const id = req.params.id;
   const body = req.body;
   StudentModel.findByIdAndUpdate(id, body, { new: true })
+    .then((response) => {
+      res
+        .status(200)
+        .json({ success: true, message: "Student update", data: response });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ success: false, error: err });
+    });
+};
+exports.addCourseUser = async (req, res) => {
+  // const courses = db.get('courses').value(); // query
+  const id = req.params.id;
+  const body = req.body;
+  let query = req.body
+  const student = await StudentModel.findOne({userID: id})
+  let copyCourses = [...student.courses]
+  query.courses.map(el=>{
+    copyCourses.push(el)
+  })
+  StudentModel.updateOne({userID: id}, {$set:{courses: copyCourses}}, { new: true })
+    .then((response) => {
+      res
+        .status(200)
+        .json({ success: true, message: "Student update", data: response });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ success: false, error: err });
+    });
+};
+
+exports.addCarShop = async (req, res) => {
+  const id = req.params.id;
+  let body = req.body
+  console.log(body)
+
+  StudentModel.updateOne({userID: id}, {$set:{carshop: body}}, { new: true })
     .then((response) => {
       res
         .status(200)

@@ -20,12 +20,14 @@ function Home() {
   
   useEffect(() => {
     fetch('http://localhost:3001/api/courses/', {
-      method: 'GET'
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
     })
       .then(res => {
         return res.json();
       })
       .then(response =>  {
+        console.log(response.courses)
         setListCourses(response.courses)})
   }, []);
   
@@ -49,7 +51,6 @@ function Home() {
                   return <div key={i} onClick={()=>displayDataCourse(elem._id)}>
                     <Coursess key={elem._id} data={elem} />
                     </div>
-                 
                 })}
               </section>
           </main>

@@ -6,9 +6,11 @@ import PaymentButton from "../../components/PaymentButton";
 import CreditCard from "../../components/CreditCard";
 import VisaForm from "../../components/VisaForm";
 import PurchasedCourse from "../../components/PurchasedCourse";
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { UserEnterContext } from "../../App";
 import { Link } from 'react-router-dom';
 import "./styles.sass";
+
 
 export const StepContext = React.createContext({});
 export const PaymentButtonContext = React.createContext({});
@@ -25,6 +27,23 @@ function Carshop() {
   const [currentStep, updateCurrentStep] = useState(1);
   const [paymentButtonSelected, setSelectedButton] = useState(1);
   const [creditCardSelected, setSelectedCreditCard] = useState(1);
+  const [infoUser, setInfoUser] = useState({})
+  const { userLogged, setUserLogged } = useContext(UserEnterContext);
+  console.log(userLogged)
+  // const getUserInfo = async () =>{
+  //   const config = {
+  //     method: 'GET',
+  //     headers: { 'Content-Type': 'application/json' },
+  //   };
+  //   await fetch('http://localhost:3001/api/students/updatecarshop/'+userLogged.typeUser.userID, config)
+  //     .then(res => {
+  //       return res.json();
+  //     })
+  //     .then(response =>  {
+  //       setInfoUser(response.student)
+  //     })
+  // }
+  // console.log(infoUser)
 
   const updateCurrent = (step) => {
     return updateCurrentStep(step);

@@ -11,26 +11,24 @@ class Header extends React.Component {
               <div className="photo"></div>
               <div className="button">
                 {" "}
-                <strong>50% OFF!</strong>
+                <strong>¡PODER!</strong>
               </div>
             </div>
 
             <div className="right">
               <div className="description">
                 <p className="text-header">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Assumenda, laboriosam? Distinctio a dolor voluptatum tempore
-                  saepe amet unde eius, doloremque porro sed quas, rerum fugit
-                  temporibus hic modi recusandae? Consequatur.
+                  Contamos con los mejores cursos para relajarte, aprender y aportar de la mejor manera en el hogar.
+                  Sorprende a tu familia con algo nuevo.
                 </p>
-                <div className="button2">Read more</div>
+                <div className="button2">Ver más</div>
               </div>
-              <div className="pages">
+              {/* <div className="pages">
                 <div className="page-n"></div>
                 <div className="page-n"></div>
                 <div className="page-n"></div>
                 <div className="page-n"></div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -10,6 +10,7 @@ const courseFields ={
     hours: { type: String},
     level: { type: String},
     category: { type: String},
+    price: { type: String },
     class: [
         {
             title:{ type: String},
