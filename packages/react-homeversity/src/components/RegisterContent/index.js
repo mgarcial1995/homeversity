@@ -29,7 +29,6 @@ const RegisterContent = ({ setOpenLogin }) => {
   return (
     <div className='loginContent'>
       <h2 className='title'>Registro</h2>
-      <div>¡Ya estas registrado!</div>
       <form className='formContent'>
         <div className='formContent_subinputs'>
           <input
