@@ -60,6 +60,7 @@ function App() {
         .then(data => {
           setUserLogged(data.userdata)
           console.log(data.userdata)
+          setModalCard(data.userdata.typeUser.carshop)
         })
         .catch(err=>{
           console.log(err)

@@ -2,6 +2,7 @@ import "./styles.sass";
 import download from '../../assets/img/download.png'
 import {useState, useContext, useEffect} from "react"
 import { UserEnterContext } from '../../App'
+import {Link} from 'react-router-dom'
 
 let allcourses = [
   {
@@ -84,9 +85,9 @@ function MyCourses() {
             <div className="myCourses_container_info_certificate">
               <img src={download} alt="Cambio" ></img>
             </div>
-            <div className="myCourses_container_info_viewcourse">
+            <Link to={`/class/${coursedata._id}`} className="myCourses_container_info_viewcourse">
               Ver curso
-            </div>
+            </Link>
           </div>
           )
         })}

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./styles.sass";
 import LogoHeader from "../../assets/img/logo-header.png";
 import Carshop from "../../assets/img/shopcart.png";
@@ -8,12 +7,21 @@ import React, { useContext, useState } from "react";
 import ModalCardShop from "../ModalCardShop";
 import { CardShopModal } from "../../App";
 import { UserEnterContext } from '../../App'
+import { Link, useNavigate } from "react-router-dom";
+
 const Navbar = (props) => {
   const { routes } = props;
   const { openLogin, setOpenLogin } = useContext(OpenLoginContext);
   const { modalCard, setModalCard } = useContext(CardShopModal);
   const { userLogged, setUserLogged } = useContext(UserEnterContext)
   const [modal, setModal]= useState(false)
+  let navigate  = useNavigate()
+  let closeSession =()=>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('idSession');
+    setUserLogged(null)
+    navigate('/')
+  }
  
 // const showModal = () => setModal(true)
   return (
@@ -38,7 +46,7 @@ const Navbar = (props) => {
       <div className="modal">
         {modal == true ? <ModalCardShop /> : ""}
       </div>
-
+      
       <div className="navbar_right">
       {
         userLogged ? 
@@ -53,9 +61,18 @@ const Navbar = (props) => {
             val
             onClick={() => setModal((prevModal) => !prevModal)}
           />
+          <div style={{color: "#FFFFFF"}} >{modalCard.length}</div>
         {
           userLogged ? 
-          <div className="navbar_right_name">Hola, {userLogged.name} {userLogged.surname} <img className="navbar_right_name_icon" src={User} alt="Comprar" /> </div>
+          <div className="navbar_right_name">
+            <div className="navbar_right_name_dat">
+              Hola, {userLogged.name} {userLogged.surname} 
+              <div style={{"color":"#FFFFFF","textDecoration":"none"}} onClick={() =>closeSession()}>
+              Cerrar sesión</div>
+            </div>
+            <img className="navbar_right_name_icon" src={User} alt="Comprar" />
+          </div>
+          
           :
           <div className="navbar_right_button" onClick={() => setOpenLogin(true)}>
             Ingresar

@@ -17,12 +17,13 @@
         margin-bottom: 4rem
         &_video
             width: 68%
-            height: 300px
+            min-height: 300px
+            height: auto
             background-color: #3e3e3e
         &_modules
             width: 28%
             background-color: #F5F5F5
-            height: 300px
+            height: auto
             padding: 1rem
             color: #FFFFFF
             &_module
@@ -35,6 +36,7 @@
                 align-items: center
                 font-weight: 600
                 border-radius: .2rem
+                margin: 1rem 0
     &_subtitle
         color: #308BE1
         font-size: 1.5rem
@@ -44,4 +46,20 @@
         width: 100%
         height: auto
         &_info
-            
+            display: flex
+            justify-content: start
+            align-items: center
+            &_avatar
+                width: 10rem
+                height: 10rem
+                overflow: hidden
+                border-radius: 50%
+                margin-right: 3rem
+                &_img
+                    width: inherit
+                    height: 100%
+            &_text
+                &_name
+                    font-weight: 600
+                    font-size: 1.2rem
+    

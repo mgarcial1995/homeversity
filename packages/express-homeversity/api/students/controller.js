@@ -113,14 +113,10 @@ exports.addCourseUser = async (req, res) => {
 };
 
 exports.addCarShop = async (req, res) => {
-  // const courses = db.get('courses').value(); // query
   const id = req.params.id;
   let body = req.body
-  // const student = await StudentModel.findOne({userID: id})
-  // let copyCourses = [...student.courses]
-  // query.courses.map(el=>{
-  //   copyCourses.push(el)
-  // })
+  console.log(body)
+
   StudentModel.updateOne({userID: id}, {$set:{carshop: body}}, { new: true })
     .then((response) => {
       res
