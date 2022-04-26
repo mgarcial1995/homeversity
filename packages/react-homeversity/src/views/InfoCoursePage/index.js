@@ -42,7 +42,7 @@ function InfoCoursePage(props) {
             <h1 className="course-page-main-section-learning-tittle">
               ¿Qué voy a aprender?
             </h1>
-            <Learning />
+            {/* <Learning /> */}
           </article>
           <article className="course-page-main-section-requirements">
             <h1 className="course-page-main-section-learning-tittle">
@@ -60,7 +60,7 @@ function InfoCoursePage(props) {
             <h1 className="course-page-main-section-courses-tittle">
               Contenido
             </h1>
-            <ProgramCourse />
+            {/* <ProgramCourse /> */}
           </article>
           <article className="course-page-main-section-requirements">
             <h1 className="teacher">Sobre nuestro experto</h1>

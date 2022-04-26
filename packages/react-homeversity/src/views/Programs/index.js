@@ -6,6 +6,13 @@ import "./styles.sass";
 export const FilterContext = React.createContext({});
 function Programs() {
   const [listPrograms, setListPrograms] = useState([])
+  const [selectedFilter, setFilter] = useState("Nombre");
+  const [renderBy, setRenderBy] = useState({
+    Nombre: "",
+    Category: "Cat1",
+    Precio: "",
+    Nivel: "Básico",
+  });
 
   useEffect(() => {
     fetch('http://localhost:3001/api/programs/', {
@@ -14,36 +21,27 @@ function Programs() {
       .then(res => {
         return res.json();
       })
-      .then(response =>  {
-        setListPrograms(response.programs)})
+      .then(response => {
+        setListPrograms(response.programs)
+      })
   }, []);
-const [selectedFilter, setFilter] = useState("Nombre");
-const [renderBy, setRenderBy] = useState({
-  Nombre: "",
-  Category: "Cat1",
-  Precio: "",
-  Nivel: "Básico",
-});
-
-return (
-  <div>
-    <FilterContext.Provider
-      value={{ selectedFilter, setFilter, renderBy, setRenderBy }}
-    >
-      <Search />
-      <div className="programs-container">
-      {listPrograms.map((program) =>(
-        <div style={{"width": "20rem"}}>
-        <Link  to={`infoprogram/${program.id}`}>
-         <Programss program={program} />
-        </Link>
+  return (
+    <div>
+      <FilterContext.Provider
+        value={{ selectedFilter, setFilter, renderBy, setRenderBy }}
+      >
+        <Search />
+        <div className="programs-container">
+          {listPrograms.map((program) => (
+            <Link className="programs-container-program" to={`infoprogram/${program._id}`}>
+              <Programss program={program} />
+            </Link> 
+          ))}
         </div>
-      ))}
-     </div>
-    </FilterContext.Provider>
-    {console.log(renderBy)}
-  </div>
-);
+      </FilterContext.Provider>
+      {console.log(renderBy)}
+    </div>
+  );
 }
 
 export default Programs;

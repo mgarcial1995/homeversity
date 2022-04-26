@@ -14,7 +14,8 @@ exports.getAllPrograms = (req, res) => {
 
 exports.getProgramById = async (req, res) => {
     const {id = null} = req.params;
-    const Program = Model.findById(id);
+    const populate = referencesNames.join(' ');
+    const Program = Model.findById(id).populate(populate);
     await Program.exec()
     .then(response => {
         if (!Program) {

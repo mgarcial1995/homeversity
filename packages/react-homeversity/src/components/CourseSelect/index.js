@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./styles.sass";
 import { CardShopModal } from "../../App";
 import { UserEnterContext } from "../../App";
@@ -6,7 +6,7 @@ import { UserEnterContext } from "../../App";
 function CourseSelect(props) {
   const { modalCard, setModalCard } = useContext(CardShopModal);
   const { userLogged, setUserLogged } = useContext(UserEnterContext);
-
+  console.log(userLogged.typeUser.userID)
   const deleteCourse =async () =>{
     let copyModal = [...modalCard];
     copyModal.splice(props.indexArray, 1)
@@ -34,13 +34,14 @@ function CourseSelect(props) {
       <div className="container1-modal-photo">
         <img src={props.val.photo} width={"150px"} height={"100px"} />
         <div className="container1-modal-photo-teacher">
-          <h1>{props.val.name}</h1>
-          <h2>{props.val.teacher.name}</h2>
+          <h1 className="container1-modal-photo-teacher-name">{props.val.name}</h1>
+          <h2 className="container1-modal-photo-teacher-info">{props.val.teacher.name}</h2>
         </div>
       </div>
-      <div className="container1-modal-photo-teacher-price">
-        <h3>S/{props.val.price}</h3>
+      <div className="container1-modal-price">
+        <h3 className="container1-modal-price-text">{props.val.price}</h3>
       </div>
+
     </div>
   );
 }

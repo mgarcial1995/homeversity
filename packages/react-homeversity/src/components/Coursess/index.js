@@ -50,7 +50,7 @@ const Coursess = ({ data }) => {
             <Link to={`/infocourse/${data.name}`}>
               <img
                 className="box-main_box-child-1_img"
-                src={data.photo ? data.photo : data.img}
+                src={data.photo ? data.photo : data.photo}
               />
             <InfoCoursePage datacourse={data}/>
             </Link>
