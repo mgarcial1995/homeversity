@@ -11,5 +11,6 @@ router.delete('/delete/:id', StudentsController.deleteStudent);
 router.put('/update/:id', StudentsController.updateStudent);
 router.put('/updatebyID/:id', StudentsController.addCourseUser);
 router.put('/updatecarshop/:id', StudentsController.addCarShop);
+router.put('/buycourse/:id', StudentsController.buyCourse);
 
 module.exports = router

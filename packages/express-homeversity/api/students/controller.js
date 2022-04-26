@@ -128,3 +128,24 @@ exports.addCarShop = async (req, res) => {
       res.status(400).json({ success: false, error: err });
     });
 };
+
+exports.buyCourse = async (req, res) => {
+  const id = req.params.id;
+  let student = await StudentModel.findOne({userID: id})
+
+  // let newStudent = await Object.assign({}, student)
+  await student.carshop.map(el=>{
+    student.courses.push(el)
+  })
+  student.carshop=[]
+  StudentModel.updateOne({userID: id}, student, { new: true })
+  .then((response) => {
+    res
+      .status(200)
+      .json({ success: true, message: "Student update", data: response });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json({ success: false, error: err });
+  });
+}

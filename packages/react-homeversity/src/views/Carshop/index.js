@@ -10,14 +10,14 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserEnterContext } from "../../App";
 import { Link } from 'react-router-dom';
 import "./styles.sass";
-
+import { CardShopModal } from "../../App";
 
 export const StepContext = React.createContext({});
 export const PaymentButtonContext = React.createContext({});
 export const CreditCardContext = React.createContext({});
 
 function Carshop() {
-  const headers = ["Producto", "Cantidad", "Eliminar", "Total"];
+  const headers = ["Producto", "Total"];
   const steps = [
     "Carrito de compras",
     "Detalle de compras",
@@ -27,27 +27,47 @@ function Carshop() {
   const [currentStep, updateCurrentStep] = useState(1);
   const [paymentButtonSelected, setSelectedButton] = useState(1);
   const [creditCardSelected, setSelectedCreditCard] = useState(1);
-  const [infoUser, setInfoUser] = useState({})
+  const [carCourses, setCarCourses] = useState([])
   const { userLogged, setUserLogged } = useContext(UserEnterContext);
-  console.log(userLogged)
-  // const getUserInfo = async () =>{
-  //   const config = {
-  //     method: 'GET',
-  //     headers: { 'Content-Type': 'application/json' },
-  //   };
-  //   await fetch('http://localhost:3001/api/students/updatecarshop/'+userLogged.typeUser.userID, config)
-  //     .then(res => {
-  //       return res.json();
-  //     })
-  //     .then(response =>  {
-  //       setInfoUser(response.student)
-  //     })
-  // }
-  // console.log(infoUser)
+  const { modalCard, setModalCard } = useContext(CardShopModal);
 
+  useEffect(async () => {
+    let sessionID = JSON.parse(localStorage.getItem("idSession"));
+    if(sessionID){
+      await fetch(`http://localhost:3001/api/users/${sessionID}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }})
+        .then(response => response.json())
+        .then(response => {
+          setCarCourses(response.userdata.typeUser.carshop)
+          console.log(response.userdata.typeUser.carshop,"dataaaaaaa")
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+    }
+  },[])
   const updateCurrent = (step) => {
+    if(step === 3){
+      const config = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({hola: "holaa"})
+      };
+      fetch('http://localhost:3001/api/students/buycourse/'+userLogged.typeUser.userID, config)
+        .then(res => {
+          return res.json();
+        })
+        .then(response =>  {
+          console.log(response.data)
+          // setCarCourses([])
+        })
+    }
     return updateCurrentStep(step);
   };
+  const goCourse = () => {
+    setModalCard([])
+  }
   const coursesOnCar = [
     {
       name: "Curso 1",
@@ -147,7 +167,7 @@ function Carshop() {
           <>
             <div className="courses-container">
               <CarHeader headers={headers} />
-              {coursesOnCar.map((course, i) => (
+              {carCourses.map((course, i) => (
                 <CoursesOnCar key={i} course={course} />
               ))}
             </div>
@@ -183,7 +203,7 @@ function Carshop() {
             <div className="payment-separator"></div>
             <div className="right">
               <div className="purchase-summary">
-                <PurchaseSummary courses={coursesOnCar} />
+                <PurchaseSummary courses={carCourses} />
               </div>
             </div>
           </div>
@@ -194,13 +214,13 @@ function Carshop() {
             <div className="sale-completed">
               <h1 className="sale-completed-tittle">¡COMPRA EXITOSA!</h1>
               <p1 className="sale-completed-mensagge">
-                Felicidades nameUser has adquirido los cursos:{" "}
+                Felicidades {userLogged.name} has adquirido los cursos:{" "}
               </p1>
-              {purchasedCourses.map((purchasedCourse) => (
+              {carCourses.map((purchasedCourse) => (
                 <PurchasedCourse purchasedCourse={purchasedCourse} />
               ))}
             </div>
-            <Link to="/courses">
+            <Link to="/courses" onClick={()=>goCourse()}>
             <button
               className="sale-completed-button"
             >

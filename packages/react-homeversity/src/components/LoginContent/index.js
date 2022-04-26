@@ -6,7 +6,7 @@ import {UserEnterContext} from '../../App'
 const LoginContent = ({setOpenLogin}) => {
     const {typeLog, setTypeLog} = useContext(TypeLoginContext)
     const {userLogged, setUserLogged} = useContext(UserEnterContext)
-    const [userLog, setUserLog] = useState({email:'martingarcial.1995@gmail.com', password:'123'})
+    const [userLog, setUserLog] = useState({email:'', password:''})
 
     let singinUser = async (event) => {
         // console.log(userLog)
